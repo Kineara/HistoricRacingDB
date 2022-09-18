@@ -16,7 +16,7 @@
     - Save an event to my profile
     - Leave public comments on an event
 
-  Stretch Goals: 
+### Stretch Goals: 
     - Admin status for certain users, allowing them to push updates to database and approve user submitted edits
     - Submit event data/results
     - Submit corrections to existing event data
