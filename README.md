@@ -25,6 +25,6 @@
 
 
 ## Models and Relationships
-    <div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/7732b65d-93c3-4032-aa2d-36e4818644c5" id="yKjSFFUzm~BX"></iframe></div>
+    https://lucid.app/documents/embedded/7732b65d-93c3-4032-aa2d-36e4818644c5
 
 
