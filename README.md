@@ -4,24 +4,25 @@
   - Provide a central location for historic race data for research, hobby, and curiousity purposes
   - Maintain a list of sources related to historic racing events that can be used to verify data
   - Give simracers and other hobbyists a one stop location for all the information they need to recreate historic racing events
+  - Allow community submission of sources and data to be added to the database after review
 
 ## User Stories
 
 ### MVP
   As a user, I can:
-    - Create a profile
-    - Log into the site
-    - Search for events by date, location, country, vehicle, or driver/rider
-    - View event information and results
-    - Save an event to my profile
-    - Leave public comments on an event
+  - Create a profile
+  - Log into the site
+  - Search for events by date, location, country, vehicle, or driver/rider
+  - View event information and results
+  - Save an event to my profile
+  - Leave public comments on an event
 
 ### Stretch Goals: 
-    - Admin status for certain users, allowing them to push updates to database and approve user submitted edits
-    - Submit event data/results
-    - Submit corrections to existing event data
-    - World visualization (show events on interactive map)
-    - Wikipedia integration for detailed information on vehicles, competitors, track, and event data
+  - Admin status for certain users, allowing them to push updates to database and approve user submitted edits
+  - Submit event data/results
+  - Submit corrections to existing event data
+  - World visualization (show events on interactive map)
+  - Wikipedia integration for detailed information on vehicles, competitors, track, and event data
 
 
 ## Models and Relationships
