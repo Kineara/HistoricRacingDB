@@ -25,6 +25,6 @@
 
 
 ## Models and Relationships
-    [View ERD](https://lucid.app/documents/embedded/7732b65d-93c3-4032-aa2d-36e4818644c5)
+    [View ERD](https://lucid.app/lucidchart/7732b65d-93c3-4032-aa2d-36e4818644c5/view#)
 
 
