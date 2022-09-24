@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/manufacturers/:id', to: 'manufacturers#show'
 
   get '/teams', to: 'teams#index'
-  get '/teams/:id', to 'teams#show'
+  get '/teams/:id', to: 'teams#show'
 
   get '/tracks', to: 'tracks#index'
   get '/tracks/:id', to: 'tracks#show'
