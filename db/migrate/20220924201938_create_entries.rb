@@ -5,6 +5,8 @@ class CreateEntries < ActiveRecord::Migration[7.0]
       t.integer :team_id
       t.integer :competitor_id
       t.integer :vehicle_id
+      t.integer :entry_id 
+      t.integer :vehicle_number 
 
       t.timestamps
     end

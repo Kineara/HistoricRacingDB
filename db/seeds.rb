@@ -39,9 +39,11 @@ rolex = uscprototype2015.events.create(name: 'Rolex 24 at Daytona', track_id: da
 rolex_race = rolex.subevents.create(name: "Race", start_date: "2015-01-24", end_date: "2015-01-25")
 
 # Entries
-rolex_race.entries.create(team_id: deltawing_racing.id, competitor_id: legge.id, vehicle_id: deltawing_vehicle.id)
-rolex_race.entries.create(team_id: deltawing_racing.id, competitor_id: rojas.id, vehicle_id: deltawing_vehicle.id)
-rolex_race.entries.create(team_id: patron_esm.id, competitor_id: sharp.id, vehicle_id: arx04b.id)
+rolex_race_entry_1 = rolex_race.entries.create(team_id: deltawing_racing.id, competitor_id: legge.id, vehicle_id: deltawing_vehicle.id, vehicle_number: 0)
+rolex_race_entry_2 = rolex_race.entries.create(team_id: deltawing_racing.id, competitor_id: rojas.id, vehicle_id: deltawing_vehicle.id)
+rolex_race_entry_3 = rolex_race.entries.create(team_id: patron_esm.id, competitor_id: sharp.id, vehicle_id: arx04b.id, vehicle_number: 1)
 
-
+# Results 
+rolex_race_entry_3.create_result(finish_position: 39, finished: false, laps: 389, notes: "Gearbox failure")
+rolex_race_entry_1.create_result(finish_position: 51, finished: false, laps: 42, notes: "Transmission failure")
 

@@ -34,6 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_201938) do
     t.integer "team_id"
     t.integer "competitor_id"
     t.integer "vehicle_id"
+    t.integer "entry_id"
+    t.integer "vehicle_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,10 +72,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_201938) do
   end
 
   create_table "results", force: :cascade do |t|
-    t.integer "event_entry_id"
+    t.integer "entry_id"
     t.integer "start_position"
     t.integer "finish_position"
-    t.integer "time"
+    t.string "time"
+    t.boolean "finished"
+    t.integer "laps"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
