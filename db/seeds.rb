@@ -27,13 +27,13 @@ sharp = usa.competitors.create(first_name: "Scott", last_name: "Sharp")
 imsa_sc = Series.create(name: 'IMSA SportsCar Championship')
 
 # Seasons
-season = imsa_sc.seasons.create(name: '2015 United SportsCar Championship')
+usc2015 = imsa_sc.seasons.create(name: '2015 United SportsCar Championship')
 
 # Championships
-championship = season.championships.create(name: 'Prototype')
+uscprototype2015 = usc2015.championships.create(name: 'Prototype')
 
 # Events
-rolex = championship.events.create(name: 'Rolex 24 at Daytona', track_id: daytona.id)
+rolex = uscprototype2015.events.create(name: 'Rolex 24 at Daytona', track_id: daytona.id)
 
 # Event Entries
 rolex.event_entries.create(team_id: deltawing_racing.id, competitor_id: legge.id, vehicle_id: deltawing_vehicle.id)
