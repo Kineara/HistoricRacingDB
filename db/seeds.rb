@@ -1,7 +1,37 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+Series.create!(name: 'World Rally Championship', vehicle_type: 'Car')
+Series.create!(name: 'MotoGP', vehicle_type: 'Motorcycle')
+Series.create!(name: 'IMSA SportsCar Championship', vehicle_type: 'Car')
+
+motogp = Series.find_by(name: 'MotoGP')
+Season.create!(name: '2021 Championship', series_id: motogp.id)
+Season.create!(name: '2020 Championship', series_id: motogp.id)
+
+wrc = Series.find_by(name: 'World Rally Championship')
+Season.create!(name: '2021 Championship', series_id: wrc.id)
+Season.create!(name: '2020 Championship', series_id: wrc.id)
+
+imsa = Series.find_by(name: 'IMSA SportsCar Championship')
+Season.create!(name: '2014 United SportsCar Championship', series_id: imsa.id)
+Season.create!(name: '2015 United SportsCar Championship', series_id: imsa.id)
+
+season = imsa.seasons.find_by(name: '2014 United SportsCar Championship')
+Championship.create!(name: 'Prototype', season_id: season.id)
+Championship.create!(name: 'Prototype Challenge', season_id: season.id)
+Championship.create!(name: 'GT Le Mans', season_id: season.id)
+Championship.create!(name: 'GT Daytona', season_id: season.id)
+
+season = imsa.seasons.find_by(name: '2015 United SportsCar Championship')
+Championship.create!(name: 'Prototype', season_id: season.id)
+Championship.create!(name: 'Prototype Challenge', season_id: season.id)
+Championship.create!(name: 'GT Le Mans', season_id: season.id)
+Championship.create!(name: 'GT Daytona', season_id: season.id)
+
+Nationality.create!(name: 'USA')
+
+nationality = Nationality.find_by(name: 'USA')
+Track.create(name: 'Daytona International Speedway', nationality_id: nationality.id)
+
+championship = Championship.find_by(name: 'Prototype')
+track = Track.find_by(name: 'Daytona International Speedway')
+Event.create(name: 'Rolex 24 at Daytona', start_date: "2015-01-24", end_date: "2015-01-25", championship_id: championship.id, track_id: track.id)
+
