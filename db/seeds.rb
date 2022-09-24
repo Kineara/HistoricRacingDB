@@ -52,4 +52,6 @@ Competitor.create!(first_name: 'Katherine', last_name: 'Legge', nationality_id: 
 nationality = Nationality.find_by(name: 'Mexico')
 Competitor.create!(first_name: 'Memo', last_name: 'Rojas', nationality_id: nationality.id)
 
-
+team = Team.find_by(name: 'DeltaWing Racing Cars with Claro/TracFone')
+competitor = Competitor.find_by(first_name: 'Katherine', last_name: 'Legge')
+event.event_entries.create(competitor_id: competitor.id, team_id: team.id)
