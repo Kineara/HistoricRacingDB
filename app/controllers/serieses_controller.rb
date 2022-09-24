@@ -3,7 +3,7 @@ class SeriesesController < ApplicationController
 
   def index 
     serieses = Series.all 
-    render json: serieses 
+    render json: serieses, include: :seasons 
   end
 
   def show 

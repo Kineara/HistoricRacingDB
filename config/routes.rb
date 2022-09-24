@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :serieses
+  resources :serieses do
+    resources :seasons
+  end
   resources :competitors, only: [:index, :show, :create, :update, :destroy]
   resources :nationalities
   resources :manufacturers
