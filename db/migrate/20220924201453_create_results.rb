@@ -1,7 +1,7 @@
 class CreateResults < ActiveRecord::Migration[7.0]
   def change
     create_table :results do |t|
-      t.integer :entry_id
+      t.integer :team_entry_id
       t.integer :start_position
       t.integer :finish_position
       t.string :time

@@ -48,6 +48,6 @@ rolex_race_deltawing_legge_entry = rolex_race_deltawing_entry.competitor_entries
 rolex_race_deltawing_rojas_entry = rolex_race_deltawing_entry.competitor_entries.create(competitor_id: rojas.id)
 
 # Results 
-# rolex_race_entry_3.create_result(finish_position: 39, finished: false, laps: 389, notes: "Gearbox failure")
-# rolex_race_entry_1.create_result(finish_position: 51, finished: false, laps: 42, notes: "Transmission failure")
+rolex_race_patron_entry.create_result(finish_position: 39, finished: false, laps: 389, notes: "Gearbox failure")
+rolex_race_deltawing_entry.create_result(finish_position: 51, finished: false, laps: 42, notes: "Transmission failure")
 

@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_212133) do
   end
 
   create_table "results", force: :cascade do |t|
-    t.integer "entry_id"
+    t.integer "team_entry_id"
     t.integer "start_position"
     t.integer "finish_position"
     t.string "time"
