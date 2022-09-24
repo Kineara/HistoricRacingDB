@@ -1,6 +1,6 @@
-class CreateTracks < ActiveRecord::Migration[7.0]
+class CreateManufacturers < ActiveRecord::Migration[7.0]
   def change
-    create_table :tracks do |t|
+    create_table :manufacturers do |t|
       t.string :name
       t.integer :nationality_id
 
