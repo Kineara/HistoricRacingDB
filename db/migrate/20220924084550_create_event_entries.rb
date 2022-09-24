@@ -4,6 +4,7 @@ class CreateEventEntries < ActiveRecord::Migration[7.0]
       t.integer :event_id
       t.integer :team_id
       t.integer :competitor_id
+      t.integer :vehicle_id 
 
       t.timestamps
     end

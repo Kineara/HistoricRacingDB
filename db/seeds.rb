@@ -1,57 +1,41 @@
-Series.create!(name: 'World Rally Championship', vehicle_type: 'Car')
-Series.create!(name: 'MotoGP', vehicle_type: 'Motorcycle')
-Series.create!(name: 'IMSA SportsCar Championship', vehicle_type: 'Car')
+# Nationalities
+usa = Nationality.create(name: 'USA')
+uk = Nationality.create(name: 'UK')
+mexico = Nationality.create(name: 'Mexico')
 
-motogp = Series.find_by(name: 'MotoGP')
-Season.create!(name: '2021 Championship', series_id: motogp.id)
-Season.create!(name: '2020 Championship', series_id: motogp.id)
+# Tracks
+daytona = usa.tracks.create(name: 'Daytona International Speedway')
 
-wrc = Series.find_by(name: 'World Rally Championship')
-Season.create!(name: '2021 Championship', series_id: wrc.id)
-Season.create!(name: '2020 Championship', series_id: wrc.id)
+# Teams
+deltawing_racing = usa.teams.create(name: 'DeltaWing Racing Cars with Claro/TracFone')
 
-imsa = Series.find_by(name: 'IMSA SportsCar Championship')
-Season.create!(name: '2014 United SportsCar Championship', series_id: imsa.id)
-Season.create!(name: '2015 United SportsCar Championship', series_id: imsa.id)
+# Manufacturers
+deltawing_cars = usa.manufacturers.create(name: 'DeltaWing Racing Cars')
 
-season = imsa.seasons.find_by(name: '2014 United SportsCar Championship')
-Championship.create!(name: 'Prototype', season_id: season.id)
-Championship.create!(name: 'Prototype Challenge', season_id: season.id)
-Championship.create!(name: 'GT Le Mans', season_id: season.id)
-Championship.create!(name: 'GT Daytona', season_id: season.id)
+# Vehicles
+deltawing_vehicle = deltawing_cars.vehicles.create(name: 'DeltaWing', year: '2015')
 
-season = imsa.seasons.find_by(name: '2015 United SportsCar Championship')
-Championship.create!(name: 'Prototype', season_id: season.id)
-Championship.create!(name: 'Prototype Challenge', season_id: season.id)
-Championship.create!(name: 'GT Le Mans', season_id: season.id)
-Championship.create!(name: 'GT Daytona', season_id: season.id)
+# Competitors
+legge = uk.competitors.create(first_name: "Katherine", last_name: "Legge")
+rojas = mexico.competitors.create(first_name: "Memo", last_name: "Rojas")
 
-Nationality.create!(name: 'USA')
-Nationality.create!(name: 'UK')
-Nationality.create!(name: 'Mexico')
-Nationality.create!(name: 'Colombia')
+# Series
+imsa_sc = Series.create(name: 'IMSA SportsCar Championship')
 
-nationality = Nationality.find_by(name: 'USA')
-Track.create!(name: 'Daytona International Speedway', nationality_id: nationality.id)
+# Seasons
+season = imsa_sc.seasons.create(name: '2015 United SportsCar Championship')
 
-championship = Championship.find_by(name: 'Prototype')
-track = Track.find_by(name: 'Daytona International Speedway')
-Event.create!(name: 'Rolex 24 at Daytona', championship_id: championship.id, track_id: track.id)
+# Championships
+championship = season.championships.create(name: 'Prototype')
 
-event = Event.find_by(name: 'Rolex 24 at Daytona')
-Subevent.create!(name: 'Practice', start_date: '2015-01-22', end_date: '2015-01-22', event_id: event.id)
-Subevent.create!(name: 'Qualifying', start_date: '2015-01-23', end_date: '2015-01-23', event_id: event.id)
-Subevent.create!(name: 'Race', start_date: '2015-01-24', end_date: '2015-01-25', event_id: event.id)
+# Events
+rolex = championship.events.create(name: 'Rolex 24 at Daytona', track_id: daytona.id)
 
-Team.create!(name: 'DeltaWing Racing Cars with Claro/TracFone', nationality_id: nationality.id)
+# Event Entries
+rolex.event_entries.create(team_id: deltawing_racing.id, competitor_id: legge.id, vehicle_id: deltawing_vehicle.id)
+rolex.event_entries.create(team_id: deltawing_racing.id, competitor_id: rojas.id, vehicle_id: deltawing_vehicle.id)
 
-Manufacturer.create!(name: 'DeltaWing', nationality_id: nationality.id)
+# Subevents
+rolex_race = rolex.subevents.create(name: "Race", start_date: "2015-01-24", end_date: "2015-01-25")
 
-nationality = Nationality.find_by(name: 'UK')
-Competitor.create!(first_name: 'Katherine', last_name: 'Legge', nationality_id: nationality.id)
-nationality = Nationality.find_by(name: 'Mexico')
-Competitor.create!(first_name: 'Memo', last_name: 'Rojas', nationality_id: nationality.id)
 
-team = Team.find_by(name: 'DeltaWing Racing Cars with Claro/TracFone')
-competitor = Competitor.find_by(first_name: 'Katherine', last_name: 'Legge')
-event.event_entries.create(competitor_id: competitor.id, team_id: team.id)
