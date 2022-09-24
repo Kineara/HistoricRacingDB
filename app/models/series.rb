@@ -1,3 +1,3 @@
 class Series < ApplicationRecord
-  has_many :seasons 
+  has_many :seasons, dependent: :destroy  
 end
