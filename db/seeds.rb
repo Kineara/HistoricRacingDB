@@ -33,5 +33,9 @@ Track.create(name: 'Daytona International Speedway', nationality_id: nationality
 
 championship = Championship.find_by(name: 'Prototype')
 track = Track.find_by(name: 'Daytona International Speedway')
-Event.create(name: 'Rolex 24 at Daytona', start_date: "2015-01-24", end_date: "2015-01-25", championship_id: championship.id, track_id: track.id)
+Event.create(name: 'Rolex 24 at Daytona', championship_id: championship.id, track_id: track.id)
 
+event = Event.find_by(name: 'Rolex 24 at Daytona')
+Subevent.create(name: 'Practice', start_date: '2015-01-22', end_date: '2015-01-22', event_id: event.id)
+Subevent.create(name: 'Qualifying', start_date: '2015-01-23', end_date: '2015-01-23', event_id: event.id)
+Subevent.create(name: 'Race', start_date: '2015-01-24', end_date: '2015-01-25', event_id: event.id)
