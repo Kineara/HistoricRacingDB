@@ -1,7 +1,7 @@
 class Subevent < ApplicationRecord
   belongs_to :event 
   has_many :results 
-  has_many :entries
-  has_many :competitors, through: :entries 
-  has_many :teams, through: :entries 
+  has_many :team_entries
+  has_many :competitors, through: :team_entries 
+  has_many :teams, through: :team_entries 
 end

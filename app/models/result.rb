@@ -1,4 +1,4 @@
 class Result < ApplicationRecord
-  belongs_to :entry 
-  has_one :subevent, through: :entry 
+  belongs_to :team_entry 
+  has_one :subevent, through: :team_entry 
 end

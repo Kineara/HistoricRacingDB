@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_24_201938) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_24_212133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,21 +21,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_201938) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "competitors", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "nationality_id"
+  create_table "competitor_entries", force: :cascade do |t|
+    t.integer "competitor_id"
+    t.integer "team_entry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "entries", force: :cascade do |t|
-    t.integer "subevent_id"
-    t.integer "team_id"
-    t.integer "competitor_id"
-    t.integer "vehicle_id"
-    t.integer "entry_id"
-    t.integer "vehicle_number"
+  create_table "competitors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "nationality_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,6 +98,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_201938) do
     t.date "start_date"
     t.date "end_date"
     t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "team_entries", force: :cascade do |t|
+    t.integer "subevent_id"
+    t.integer "team_id"
+    t.string "vehicle_number"
+    t.integer "vehicle_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

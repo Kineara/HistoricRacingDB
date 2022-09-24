@@ -1,6 +1,5 @@
 class Competitor < ApplicationRecord
   belongs_to :nationality 
-  has_many :entries 
-  has_many :teams, through: :entries 
-  has_many :subevents, through: :entries 
+  has_many :competitor_entries 
+  has_many :team_entries, through: :competitor_entries 
 end
