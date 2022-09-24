@@ -35,12 +35,13 @@ uscprototype2015 = usc2015.championships.create(name: 'Prototype')
 # Events
 rolex = uscprototype2015.events.create(name: 'Rolex 24 at Daytona', track_id: daytona.id)
 
-# Event Entries
-rolex.event_entries.create(team_id: deltawing_racing.id, competitor_id: legge.id, vehicle_id: deltawing_vehicle.id)
-rolex.event_entries.create(team_id: deltawing_racing.id, competitor_id: rojas.id, vehicle_id: deltawing_vehicle.id)
-rolex.event_entries.create(team_id: patron_esm.id, competitor_id: sharp.id, vehicle_id: arx04b.id)
-
 # Subevents
 rolex_race = rolex.subevents.create(name: "Race", start_date: "2015-01-24", end_date: "2015-01-25")
+
+# Entries
+rolex_race.entries.create(team_id: deltawing_racing.id, competitor_id: legge.id, vehicle_id: deltawing_vehicle.id)
+rolex_race.entries.create(team_id: deltawing_racing.id, competitor_id: rojas.id, vehicle_id: deltawing_vehicle.id)
+rolex_race.entries.create(team_id: patron_esm.id, competitor_id: sharp.id, vehicle_id: arx04b.id)
+
 
 

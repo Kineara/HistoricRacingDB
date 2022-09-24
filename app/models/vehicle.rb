@@ -1,4 +1,4 @@
 class Vehicle < ApplicationRecord
   belongs_to :manufacturer
-  has_many :event_entries 
+  has_many :entries 
 end
