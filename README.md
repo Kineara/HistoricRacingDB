@@ -39,8 +39,8 @@
   /serieses
   - List all series and available seasons
 
-  /seasons/:id
-  - List season data and associated championships
-  
-  /championships/:id
-  - List championship data and associated events 
+  /events/:id
+  - List complete event data for specified event ID
+
+  /events/:id/results
+  - 

@@ -3,12 +3,12 @@ class TeamsController < ApplicationController
 
   def index 
     teams = Team.all 
-    render json: teams 
+    render json: teams
   end
 
   def show 
     team = find_team 
-    render json: team 
+    render json: team, include: ['team_entries', 'team_entries.vehicle', 'team_entries.result', 'team_entries.subevent.event', 'team_entries.competitor_entries.competitors']
   end
 
   def create 

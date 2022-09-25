@@ -1,5 +1,5 @@
 class SubeventSerializer < ActiveModel::Serializer
-  attributes :id, :name, :start_date, :end_date
+  attributes :name, :start_date, :end_date
 
   belongs_to :event 
   has_many :team_entries 

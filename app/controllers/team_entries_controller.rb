@@ -6,10 +6,10 @@ class TeamEntriesController < ApplicationController
   #   render json: team_entries
   # end
 
-  def show 
-    team_entry = find_team_entry
-    render json: team_entry
-  end
+  # def show 
+  #   team_entry = find_team_entry
+  #   render json: team_entry
+  # end
 
   def create 
     team_entry = TeamEntry.create(team_entry_params)

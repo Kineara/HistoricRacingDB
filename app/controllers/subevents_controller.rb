@@ -6,10 +6,10 @@ class SubeventsController < ApplicationController
   #   render json: subevents
   # end
 
-  def show 
-    subevent = find_subevent
-    render json: subevent, include: ['team_entries', 'team_entries.team', 'team_entries.competitors', 'team_entries.result']
-  end
+  # def show 
+  #   subevent = find_subevent
+  #   render json: subevent
+  # end
 
   def create 
     subevent = Subevent.create(subevent_params)

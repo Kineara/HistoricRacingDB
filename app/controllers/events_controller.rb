@@ -1,36 +1,38 @@
 class EventsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-  # def index 
-  #   events = Event.all 
+  # def index
+  #   events = Event.all
   #   render json: events
   # end
 
-  def show 
+  def show
     event = find_event
-    render json: event
+    render json: event,
+           include: ['subevents', 'subevents.team_entries', 'subevents.team_entries.teams', 'subevents.team_entries.vehicle',
+                     'subevents.team_entries.competitors', 'subevents.team_entries.result']
   end
 
-  def create 
+  def create
     event = Event.create(event_params)
-    render json: event, status: :created 
+    render json: event, status: :created
   end
 
-  def update 
+  def update
     event = find_event
     event.update(event_params)
     render json: event
   end
 
-  def destroy 
+  def destroy
     event = find_event
-    event.destroy 
-    head :no_content 
+    event.destroy
+    head :no_content
   end
 
-  private 
+  private
 
-  def event_params 
+  def event_params
     params.permit(:name, :event_id, :track_id)
   end
 
@@ -39,6 +41,6 @@ class EventsController < ApplicationController
   end
 
   def render_not_found_response
-    render json: { error: "Event not found" }, status: :not_found
+    render json: { error: 'Event not found' }, status: :not_found
   end
 end
