@@ -31,11 +31,11 @@ class NationalitiesController < ApplicationController
   private 
 
   def nationality_params 
-    params.permit(:first_name, :last_name, :nationality_id)
+    params.permit(:name)
   end
 
   def find_nationality
-    Nationality.find_by(id: params[:id])
+    Nationality.find(params[:id])
   end
 
   def render_not_found_response

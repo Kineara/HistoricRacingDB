@@ -31,11 +31,11 @@ class SeriesesController < ApplicationController
   private 
 
   def series_params 
-    params.permit(:first_name, :last_name, :nationality_id)
+    params.permit(:name)
   end
 
   def find_series
-    Series.find_by(id: params[:id])
+    Series.find(params[:id])
   end
 
   def render_not_found_response

@@ -36,7 +36,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   end
 
   def find_competitor
-    Competitor.find_by(id: params[:id])
+    Competitor.find(params[:id])
   end
 
   def render_not_found_response

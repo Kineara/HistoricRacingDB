@@ -31,11 +31,11 @@ class TracksController < ApplicationController
   private 
 
   def track_params 
-    params.permit(:first_name, :last_name, :nationality_id)
+    params.permit(:name, :nationality_id)
   end
 
   def find_track
-    Track.find_by(id: params[:id])
+    Track.find(params[:id])
   end
 
   def render_not_found_response

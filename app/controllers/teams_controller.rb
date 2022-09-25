@@ -31,11 +31,11 @@ class TeamsController < ApplicationController
   private 
 
   def team_params 
-    params.permit(:first_name, :last_name, :nationality_id)
+    params.permit(:name, :nationality_id)
   end
 
   def find_team
-    Team.find_by(id: params[:id])
+    Team.find(params[:id])
   end
 
   def render_not_found_response
