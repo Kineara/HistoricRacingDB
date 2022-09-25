@@ -8,7 +8,7 @@ class SeasonsController < ApplicationController
     else
       seasons = Season.all 
     end
-    render json: seasons, include: :series
+    render json: seasons
   end
 
   def show 

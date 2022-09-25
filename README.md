@@ -30,11 +30,6 @@
 
 
 ## API Endpoints
-  /serieses
-  - List all race series currently in database
-
-  /serieses/:id
-  - List single series data and all seasons
-
-  /serieses/:id/seasons
-  - List series data and all seasons in database for series ID
+  /nationalities
+  - List all nationalities in the database, with associated competitors, tracks, teams, and manufacturers
+  
