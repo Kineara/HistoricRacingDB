@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_24_212133) do
     t.integer "start_position"
     t.integer "finish_position"
     t.string "time"
+    t.string "speed"
     t.boolean "finished"
     t.integer "laps"
     t.string "notes"

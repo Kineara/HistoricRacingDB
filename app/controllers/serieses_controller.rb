@@ -3,12 +3,12 @@ class SeriesesController < ApplicationController
 
   def index 
     serieses = Series.all 
-    render json: serieses, include: :seasons 
+    render json: serieses
   end
 
   def show 
     series = find_series 
-    render json: series 
+    render json: series, include: :seasons  
   end
 
   def create 

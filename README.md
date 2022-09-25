@@ -29,3 +29,12 @@
   [View ERD](https://lucid.app/lucidchart/7732b65d-93c3-4032-aa2d-36e4818644c5/view#)
 
 
+## API Endpoints
+  /serieses
+  - List all race series currently in database
+
+  /serieses/:id
+  - List single series data and all seasons
+
+  /serieses/:id/seasons
+  - List series data and all seasons in database for series ID
