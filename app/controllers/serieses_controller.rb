@@ -8,7 +8,7 @@ class SeriesesController < ApplicationController
 
   def show 
     series = find_series 
-    render json: series, include: :seasons  
+    render json: series
   end
 
   def create 

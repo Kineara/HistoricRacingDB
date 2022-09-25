@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :serieses do
-    resources :seasons
-  end
+  resources :serieses, only: [:index, :show]
 
-  resources :seasons do 
-    resources :championships 
-  end
-  
+  resources :seasons
+
   resources :championships
   resources :events 
   resources :subevents 

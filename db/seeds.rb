@@ -32,8 +32,8 @@ sharp = usa.competitors.create(first_name: "Scott", last_name: "Sharp")
 hickman = uk.competitors.create(first_name: "Peter", last_name: "Hickman")
 
 # Series
-imsa_sc = Series.create(name: 'IMSA SportsCar Championship')
-iom_tt = Series.create(name: 'Isle of Man Tourist Trophy')
+imsa_sc = Series.create(name: 'IMSA SportsCar Championship', vehicle_type: "Car")
+iom_tt = Series.create(name: 'Isle of Man Tourist Trophy', vehicle_type: "Motorcycle")
 
 # Seasons
 usc2015 = imsa_sc.seasons.create(name: '2015 United SportsCar Championship')
