@@ -1,14 +1,14 @@
 class SubeventsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-  def index 
-    subevents = Subevent.all 
-    render json: subevents
-  end
+  # def index 
+  #   subevents = Subevent.all 
+  #   render json: subevents
+  # end
 
   def show 
     subevent = find_subevent
-    render json: subevent
+    render json: subevent, include: ['team_entries', 'team_entries.team', 'team_entries.competitors', 'team_entries.result']
   end
 
   def create 
