@@ -1,15 +1,15 @@
 class SeasonsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-  def index 
-    if params[:series_id]
-      season = Season.find(params[:series_id])
-      seasons = season.seasons 
-    else
-      seasons = Season.all 
-    end
-    render json: seasons
-  end
+  # def index 
+  #   if params[:series_id]
+  #     season = Season.find(params[:series_id])
+  #     seasons = season.seasons 
+  #   else
+  #     seasons = Season.all 
+  #   end
+  #   render json: seasons
+  # end
 
   def show 
     season = find_season

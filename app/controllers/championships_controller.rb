@@ -1,10 +1,10 @@
 class ChampionshipsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-  def index 
-    championships = Championship.all 
-    render json: championships
-  end
+  # def index 
+  #   championships = Championship.all 
+  #   render json: championships
+  # end
 
   def show 
     championship = find_championship

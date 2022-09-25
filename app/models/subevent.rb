@@ -4,4 +4,5 @@ class Subevent < ApplicationRecord
   has_many :results, through: :team_entries 
   has_many :competitors, through: :team_entries 
   has_many :teams, through: :team_entries 
+
 end

@@ -32,4 +32,15 @@
 ## API Endpoints
   /nationalities
   - List all nationalities in the database, with associated competitors, tracks, teams, and manufacturers
+
+  /tracks
+  - List all tracks and associated nationalities
+
+  /serieses
+  - List all series and available seasons
+
+  /seasons/:id
+  - List season data and associated championships
   
+  /championships/:id
+  - List championship data and associated events 
