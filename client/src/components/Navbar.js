@@ -2,9 +2,10 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
+import HomeIcon from '@mui/icons-material/Home';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import DatasetIcon from '@mui/icons-material/Dataset';
 
 export default function Navbar() {
   const [value, setValue] = React.useState(0);
@@ -18,9 +19,10 @@ export default function Navbar() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
+        <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+        <BottomNavigationAction label="Database" icon={<DatasetIcon />} />
         <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+        <BottomNavigationAction label="Profile" icon={<AccountBoxIcon />} />
       </BottomNavigation>
     </Box>
   );
