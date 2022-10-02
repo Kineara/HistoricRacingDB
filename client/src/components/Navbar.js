@@ -6,6 +6,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import DatasetIcon from '@mui/icons-material/Dataset';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [value, setValue] = React.useState(0);
@@ -19,10 +20,10 @@ export default function Navbar() {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Home" icon={<HomeIcon />} />
-        <BottomNavigationAction label="Database" icon={<DatasetIcon />} />
-        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-        <BottomNavigationAction label="Profile" icon={<AccountBoxIcon />} />
+        <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} to="/" />
+        <BottomNavigationAction label="Database" icon={<DatasetIcon />} component={Link} to="/database" />
+        <BottomNavigationAction label="Favorites" icon={<FavoriteIcon  />} component={Link} to="/favorites" />
+        <BottomNavigationAction label="Account" icon={<AccountBoxIcon />} component={Link} to="/account" />
       </BottomNavigation>
     </Box>
   );
