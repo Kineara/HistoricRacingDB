@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :seasons, only: [:show]
   resources :championships, only: [:show]
 
-  resources :events, only: [:show]
+  resources :events, only: [:index, :show]
 
   #resources :subevents, only: [:show]
 
@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   resources :teams
   resources :tracks
   #resources :team_entries 
+
+  resources :db_summary, only: [:index]
 
 end
