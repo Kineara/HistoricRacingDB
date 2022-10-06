@@ -21,7 +21,7 @@ const store = createStore(
 root.render(
   <React.StrictMode> 
     <Provider store={store}>
-      <Box display="flex" justifyContent="center" aligItems="center" minHeight="100vh">
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh">
       <App />
       </Box>
     </Provider>
