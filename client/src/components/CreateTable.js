@@ -24,11 +24,11 @@ export default function CreateTable({ tableData }) {
   });
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 300, maxWidth: 300 }} aria-label="simple table">
+    <TableContainer component={Paper} align="center">
+      <Table sx={{ width: "100%" }} size="small" aria-label="table">
         <TableHead>
           <TableRow>
-            <TableCell>Data Type</TableCell>
+            <TableCell align="left">Data Type</TableCell>
             <TableCell align="right">Current Count</TableCell>
           </TableRow>
         </TableHead>
