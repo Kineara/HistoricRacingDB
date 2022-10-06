@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :db_summary, only: [:index]
   post "/login", to: "sessions#create"
+  post "/createAccount", to: "users#create"
   get "/me", to: "users#show"
   delete "/logout", to: "sessions#destroy"
 
