@@ -16,7 +16,7 @@ export default function CreateTable({ tableData }) {
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
       >
         <TableCell component="th" scope="row">
-          {key.replace(/\b[a-z]/, function(x){return x.toUpperCase();})}
+          {key.replace(/\b[a-z]/, x => x.toUpperCase())}
         </TableCell>
         <TableCell align="right">{tableData[key]}</TableCell>
       </TableRow>
