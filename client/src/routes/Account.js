@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react"; 
 import Login from "../components/Login";
+import Typography from '@mui/material/Typography';
+
 
 function Account () {
   const [user, setUser] = useState(null);
@@ -15,7 +17,7 @@ function Account () {
   }, []);
 
   if (user) {
-    return <h2>Welcome, {user.username}!</h2>;
+    return <Typography>Welcome, {user.username}!</Typography>;
   } else {
     return <Login onLogin={setUser} />;
   }

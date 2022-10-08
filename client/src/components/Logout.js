@@ -1,7 +1,8 @@
 import React from "react";
+import Box from "@mui/material/Box";
 
 function Logout() {
-  
+
   function handleLogout({ onLogout }) {
     fetch("/logout", {
       method: "DELETE",
@@ -12,9 +13,9 @@ function Logout() {
   }
 
   return (
-    <>
+    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
       <button onClick={handleLogout}>Logout</button>
-    </>
+    </Box>
   );
 }
 
