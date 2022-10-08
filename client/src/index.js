@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createStore } from "redux";
 import summaryReducer from "./components/summarySlice";
+import accountReducer from "./components/accountSlice";
 import "./index.css";
 import App from "./components/App";
 import { Provider } from "react-redux";
@@ -15,6 +16,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const store = createStore(
   summaryReducer,
+  accountReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
