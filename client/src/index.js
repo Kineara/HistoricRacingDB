@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createStore } from "redux";
-import summaryReducer from "./components/summarySlice";
-import accountReducer from "./components/accountSlice";
+// import summaryReducer from "./components/summarySlice";
+// import accountReducer from "./components/accountSlice";
+import store from "./store";
 import "./index.css";
 import App from "./components/App";
 import { Provider } from "react-redux";
@@ -14,11 +14,11 @@ import Box from '@mui/material/Box';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const store = createStore(
-  summaryReducer,
-  accountReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
+// const store = createStore(
+//   summaryReducer,
+//   accountReducer,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+//   );
 
 root.render(
   <React.StrictMode> 

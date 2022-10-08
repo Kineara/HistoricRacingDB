@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
-import summaryReducer from "./components/summarySlice"
+import summaryReducer from "./components/summariesSlice"
 import accountReducer from "./components/accountSlice" 
 
 const store = configureStore({
   reducer: {
-    summary: summaryReducer,
+    summaries: summaryReducer,
     account: accountReducer
   },
 });
