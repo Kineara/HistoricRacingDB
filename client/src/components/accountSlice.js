@@ -1,38 +1,22 @@
+import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
-  user: "test",
-  username: "",
+  entities: null,
+  status: "idle",
 
 };
 
-export function setUser(user) {
-  return {
-    type: "setUser",
-    payload: user,
-  };
-}
+const userSlice = createSlice({
+  name: "user",
+  initialState,
+  reducers: {
+    setUser(state, action) {
+      state.entities = action.payload 
+    },
 
-export function updateUsername(username) {
-  return {
-    type: "updateUsername",
-    payload: username,
-  };
-}
-
-function accountReducer(state = initialState, action) {
-  switch (action.type) {
-    case "setUser":
-      return {
-        ...state,
-        user: action.payload,
-      };
-    case "updateUsername":
-      return {
-        ...state,
-        username: action.payload,
-      }
-    default:
-      return state;
   }
-}
+})
 
-export default accountReducer;
+export const { setUser } = userSlice.actions 
+
+export default userSlice.reducer 
