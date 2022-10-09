@@ -7,7 +7,7 @@ function DatabaseSearchResults({ data }) {
   return (
     <Box display="flex">
       {data.map((entry) => {
-        return <ResultsCard data={entry} />;
+        return <ResultsCard data={entry} key={entry.id}/>;
       })}
     </Box>
   );
