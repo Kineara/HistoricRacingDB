@@ -8,7 +8,7 @@ function DatabaseSearch() {
   const [searchCategory, setSearchCategory] = useState("serieses");
   const [searchResults, setSearchResults] = useState([]);
 
-  console.log(searchCategory);
+  console.log(searchResults)
 
 
   useEffect(() => {
