@@ -5,24 +5,25 @@ import MenuItem from "@mui/material/MenuItem";
 import DatabaseSearchResults from "./DatabaseSearchResults.js";
 
 function DatabaseSearch() {
-  const [searchCategory, setSearchCategory] = useState("series");
+  const [searchCategory, setSearchCategory] = useState("serieses");
   const [searchResults, setSearchResults] = useState([]);
 
+  console.log(searchCategory);
 
 
   useEffect(() => {
-    fetch("/serieses")
+    fetch(`/${searchCategory}`)
       .then((response) => response.json())
       .then((data) => setSearchResults(data));
-  }, []);
+  }, [searchCategory]);
 
   const searchCategories = [
-    "nationalities",
-    "series",
-    "tracks",
-    "teams",
-    "manufacturers",
-    "competitors",
+    {label: "nationalities", value: "nationalities"},
+    {label: "series", value: "serieses"},
+    {label: "tracks", value: "tracks"},
+    {label: "teams", value: "teams"},
+    {label: "manufacturers", value: "manufacturers"},
+    {label: "competitors", value: "competitors"},
   ];
 
   const handleChange = (e) => {
@@ -54,8 +55,8 @@ function DatabaseSearch() {
             helperText="Select a search category"
           >
             {searchCategories.map((option) => (
-              <MenuItem key={option} value={option}>
-                {option.replace(/\b[a-z]/, (x) => x.toUpperCase())}
+              <MenuItem key={option.value} value={option.value}>
+                {option.label.replace(/\b[a-z]/, (x) => x.toUpperCase())}
               </MenuItem>
             ))}
           </TextField>

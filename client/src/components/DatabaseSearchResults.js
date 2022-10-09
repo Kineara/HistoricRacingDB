@@ -5,7 +5,7 @@ import ResultsCard from "./ResultsCard";
 function DatabaseSearchResults({ data }) {
   // console.log(data);
   return (
-    <Box display="flex">
+    <Box display="flex" flexDirection="row" flexWrap="wrap" justifyContent="center" alignItems="center">
       {data.map((entry) => {
         return <ResultsCard data={entry} key={entry.id}/>;
       })}

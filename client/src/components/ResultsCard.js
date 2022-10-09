@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 function ResultsCard({ data }) {
 
   return (
-    <Box sx={{ minWidth: 275, margin: "10px", maxWidth: "100%"}}>
+    <Box sx={{ width: 300, margin: 1}} >
       <Card variant="outlined">
         <React.Fragment>
           <CardContent>
