@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import React from "react";
-import DatabaseSummary from "../components/DatabaseSummary";
+import DatabaseSummary from "../components/Summaries";
 import Link from "@mui/material/Link";
 
 function Home() {
