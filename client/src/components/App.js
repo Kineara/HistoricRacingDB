@@ -5,6 +5,7 @@ import CreateAccount from "./CreateAccount";
 import Account from "../routes/Account";
 import Login from "./Login";
 import Logout from "./Logout";
+import Database from "./Database";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/database" element={<Database />} />
         </Route>
       </Routes>
     </BrowserRouter>
