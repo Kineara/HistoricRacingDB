@@ -1,4 +1,6 @@
 class DbSummaryController < ApplicationController
+  skip_before_action :authorized, only: [:index]
+
   def index 
     data_totals = {
     events: Event.all.length,
