@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../components/accountSlice";
+import { setUser, setUserToken } from "../components/accountSlice";
 import { setUsername, setPassword, setPasswordConfirmation } from "../components/createAccountSlice";
 
 function CreateAccount() {
@@ -41,6 +41,7 @@ function CreateAccount() {
 
   function onCreateAccount(data) {
     dispatch(setUser(data.user));
+    dispatch(setUserToken(data.jwt))
     localStorage.setItem("jwt", data.jwt);
   }
 

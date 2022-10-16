@@ -10,6 +10,7 @@ const accountSlice = createSlice({
   name: "account",
   initialState: {
     currentUser: null,
+    userToken: null,
     username: "",
     password: "",
     passwordConfirmation: "",
@@ -19,6 +20,9 @@ const accountSlice = createSlice({
     setUser(state, action) {
       state.currentUser = action.payload;
     },
+    setUserToken(state, action) {
+      state.userToken = action.payload;
+    }
     // userAdded(state, action) {
     //   state.entities.push(action.payload);
     // },
@@ -40,6 +44,6 @@ const accountSlice = createSlice({
   // },
 });
 
-export const { setUser } = accountSlice.actions;
+export const { setUser, setUserToken } = accountSlice.actions;
 
 export default accountSlice.reducer;
