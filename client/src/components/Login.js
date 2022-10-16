@@ -1,13 +1,12 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
-import { useState } from "react";
 import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../components/accountSlice";
 import { setUsername, setPassword } from "../components/loginSlice";
 
-function Login({ onLogin }) {
+function Login() {
   const dispatch = useDispatch();
   const username = useSelector(state => state.login.username);
   const password = useSelector(state => state.login.password);
@@ -19,12 +18,15 @@ function Login({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/api/v1/users", {
+    fetch("/api/v1/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username }),
+      body: JSON.stringify({ user: {
+        username,
+        password,
+      } }),
     })
       .then((r) => r.json())
       .then((data) => {

@@ -1,19 +1,19 @@
 import React from "react";
 import Login from "../components/Login";
-import Typography from '@mui/material/Typography';
-import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "../components/accountSlice";
+import Logout from "../components/Logout";
+import Typography from "@mui/material/Typography";
+import { useSelector } from "react-redux";
 
-
-function Account () {
-
-
-
-  const user = useSelector((state) => state.account.currentUser)
-  const dispatch = useDispatch();
+function Account() {
+  const user = useSelector((state) => state.account.currentUser);
 
   if (user) {
-    return <Typography>Welcome, {user.username}!</Typography>;
+    return (
+      <>
+        <Typography>Welcome, {user.username}!</Typography>
+        <Logout />
+      </>
+    );
   } else {
     return <Login />;
   }
