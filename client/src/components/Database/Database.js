@@ -1,6 +1,9 @@
 import React from "react";
 import DatabaseSearch from "./DatabaseSearch";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import SubmitForm from "./SubmitForm";
+import Button from "@mui/material/Button";
 
 function Database() {
   return (
@@ -10,8 +13,10 @@ function Database() {
       alignItems="center"
       justifyContent="center"
     >
-      <div>Database</div>
+      <Typography>Database</Typography>
       <DatabaseSearch />
+      <Typography>-or-</Typography>
+      <Button variant="outlined" href="/submit">Submit something new</Button>
     </Box>
   );
 }

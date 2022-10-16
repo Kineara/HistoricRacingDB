@@ -3,28 +3,19 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import DatabaseSearchResults from "./DatabaseSearchResults.js";
+import { useSelector } from "react-redux";
 
 function DatabaseSearch() {
   const [searchCategory, setSearchCategory] = useState("serieses");
   const [searchResults, setSearchResults] = useState([]);
-
-  console.log(searchResults)
-
+  const state = useSelector(state => state);
+  const searchCategories = state.database.categories 
 
   useEffect(() => {
     fetch(`/${searchCategory}`)
       .then((response) => response.json())
       .then((data) => setSearchResults(data));
   }, [searchCategory]);
-
-  const searchCategories = [
-    {label: "nationalities", value: "nationalities"},
-    {label: "series", value: "serieses"},
-    {label: "tracks", value: "tracks"},
-    {label: "teams", value: "teams"},
-    {label: "manufacturers", value: "manufacturers"},
-    {label: "competitors", value: "competitors"},
-  ];
 
   const handleChange = (e) => {
     setSearchCategory(e.target.value);
