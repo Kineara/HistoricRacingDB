@@ -1,21 +1,19 @@
 import React from "react";
-import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../components/accountSlice";
+import { setUsername, setPassword, setPasswordConfirmation } from "../components/createAccountSlice";
 
 function CreateAccount() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  // const [user, setUser] = useState(null);
-
   const dispatch = useDispatch();
+  const username = useSelector(state => state.createAccount.username);
+  const password = useSelector(state => state.createAccount.password);
+  const passwordConfirmation = useSelector(state => state.createAccount.passwordConfirmation);
 
-  const user = useSelector(state => state.account.currentUser);
-  console.log(user);
+  const state = useSelector(state => state);
+  console.log(state);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -66,21 +64,21 @@ function CreateAccount() {
             type="text"
             id="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => dispatch(setUsername(e.target.value))}
           />
           <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => dispatch(setPassword(e.target.value))}
           />
           <label htmlFor="password_confirmation">Confirm Password:</label>
           <input
             type="password"
             id="password_confirmation"
             value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
+            onChange={(e) => dispatch(setPasswordConfirmation(e.target.value))}
           />
           <button type="submit">Submit</button>
         </Box>

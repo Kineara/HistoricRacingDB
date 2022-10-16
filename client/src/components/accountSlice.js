@@ -10,6 +10,9 @@ const accountSlice = createSlice({
   name: "account",
   initialState: {
     currentUser: null,
+    username: "",
+    password: "",
+    passwordConfirmation: "",
     status: "idle",
   },
   reducers: {
