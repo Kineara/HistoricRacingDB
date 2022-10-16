@@ -7,10 +7,7 @@ import { setUser } from "../components/accountSlice";
 
 function Account () {
 
-  function onLogin(data) {
-    dispatch(setUser(data.user));
-    localStorage.setItem("jwt", data.jwt);
-  }
+
 
   const user = useSelector((state) => state.account.currentUser)
   const dispatch = useDispatch();
@@ -18,7 +15,7 @@ function Account () {
   if (user) {
     return <Typography>Welcome, {user.username}!</Typography>;
   } else {
-    return <Login onLogin={onLogin}/>;
+    return <Login />;
   }
 }
 
