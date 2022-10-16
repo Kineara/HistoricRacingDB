@@ -26,7 +26,7 @@ function Login({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/login", {
+    fetch("/api/v1/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,9 +34,8 @@ function Login({ onLogin }) {
       body: JSON.stringify({ username }),
     })
       .then((r) => r.json())
-      .then((user) => {
-        onLogin(user)
-        console.log(user);
+      .then((data) => {
+        onLogin(data)
       });
   }
   return (

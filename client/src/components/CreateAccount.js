@@ -3,33 +3,56 @@ import { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../components/accountSlice";
 
-function CreateAccount({ onLogin }) {
+function CreateAccount() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  // const [user, setUser] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const user = useSelector(state => state.account.currentUser);
+  console.log(user);
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/createAccount", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        user: {
-          username,
-          password,
-          password_confirmation: passwordConfirmation,
+    if (password === passwordConfirmation) {
+      fetch("/api/v1/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      }),
-    })
-      .then((r) => r.json())
-      .then(onLogin);
+        body: JSON.stringify({
+          user: {
+            username,
+            password,
+            // password_confirmation: passwordConfirmation,
+          },
+        }),
+      })
+        .then((r) => r.json())
+        .then((data) => onCreateAccount(data));
+    }
+    else {
+      console.log("fix your password yo")
+    }
+  }
+
+  function onCreateAccount(data) {
+    dispatch(setUser(data.user));
+    localStorage.setItem("jwt", data.jwt);
   }
 
   return (
-    <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+    >
       <Typography>Create an Account</Typography>
       <form onSubmit={handleSubmit}>
         <Box
@@ -63,7 +86,9 @@ function CreateAccount({ onLogin }) {
         </Box>
       </form>
       <Typography>
-        <Link href="/login" underline="none">Back to login</Link>
+        <Link href="/login" underline="none">
+          Back to login
+        </Link>
       </Typography>
     </Box>
   );
