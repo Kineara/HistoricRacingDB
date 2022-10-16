@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser } from "./accountSlice";
+import { setUser } from "../State/Slices/accountSlice";
 
 function Logout() {
   const dispatch = useDispatch();

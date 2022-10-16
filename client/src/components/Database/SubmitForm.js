@@ -7,7 +7,7 @@ import Select from '@mui/material/Select';
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { useDispatch, useSelector } from "react-redux";
-import { setEventType } from "./submitFormSlice";
+import { setEventType } from "../State/Slices/submitFormSlice";
 
 function SubmitForm() {
   

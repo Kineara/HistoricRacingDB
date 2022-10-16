@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSummaries } from "./summariesSlice";
+import { fetchSummaries } from "../State/Slices/summariesSlice";
 import CreateTable from "./SummariesTable";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";

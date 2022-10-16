@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser, setUserToken } from "./accountSlice";
-import { setUsername, setPassword, setPasswordConfirmation } from "./createAccountSlice";
+import { setUser, setUserToken } from "../State/Slices/accountSlice";
+import { setUsername, setPassword, setPasswordConfirmation } from "../State/Slices/createAccountSlice";
 
 function CreateAccount() {
   const dispatch = useDispatch();
