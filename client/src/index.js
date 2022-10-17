@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 // import summaryReducer from "./components/summarySlice";
 // import accountReducer from "./components/accountSlice";
-import store from "./components/State/store";
+import store from "./components/state/store";
 import "./index.css";
 import App from "./components/App";
 import { Provider } from "react-redux";

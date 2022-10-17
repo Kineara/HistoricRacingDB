@@ -9,7 +9,7 @@ function DatabaseSearch() {
   const [searchCategory, setSearchCategory] = useState("serieses");
   const [searchResults, setSearchResults] = useState([]);
   const state = useSelector(state => state);
-  const searchCategories = state.database.categories 
+  const searchCategories = state.database.searchCategories 
 
   useEffect(() => {
     fetch(`/${searchCategory}`)

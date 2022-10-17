@@ -7,14 +7,12 @@ import Select from '@mui/material/Select';
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { useDispatch, useSelector } from "react-redux";
-import { setEventType } from "../State/Slices/submitFormSlice";
+import { setSearchFormEventType } from "../state/slices/databaseSlice";
 
 function SubmitForm() {
   
   const dispatch = useDispatch();
   const state = useSelector(state => state)
-  console.log(state)
-
 
   return (
     <Box
@@ -30,8 +28,9 @@ function SubmitForm() {
         <Select 
           labelId="event-type-label"
           id="event-type"
-          value={state.submitForm.eventType}
+          value={state.database.searchFormEventType}
           label="Type"
+          onChange={(e) => dispatch(setSearchFormEventType(e.target.value))}
           >
             <MenuItem value="series">Series</MenuItem>
             <MenuItem value="competitor">Competitor</MenuItem>

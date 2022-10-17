@@ -3,21 +3,16 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser, setUserToken } from "../State/Slices/accountSlice";
-import { setUsername, setPassword, setPasswordConfirmation } from "../State/Slices/createAccountSlice";
+import { setUser, setUserToken, setCreateAccountUsername, setCreateAccountPassword, setCreateAccountPasswordConfirmation } from "../state/slices/accountSlice";
 
 function CreateAccount() {
   const dispatch = useDispatch();
-  const username = useSelector(state => state.createAccount.username);
-  const password = useSelector(state => state.createAccount.password);
-  const passwordConfirmation = useSelector(state => state.createAccount.passwordConfirmation);
-
   const state = useSelector(state => state);
-  console.log(state);
+
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (password === passwordConfirmation) {
+    if (state.account.createAccountPassword === state.account.createAccountPasswordConfirmation) {
       fetch("/api/v1/users", {
         method: "POST",
         headers: {
@@ -25,9 +20,8 @@ function CreateAccount() {
         },
         body: JSON.stringify({
           user: {
-            username,
-            password,
-            // password_confirmation: passwordConfirmation,
+            username: state.account.createAccountUsername,
+            password: state.account.createAccountPassword,
           },
         }),
       })
@@ -64,22 +58,22 @@ function CreateAccount() {
           <input
             type="text"
             id="username"
-            value={username}
-            onChange={(e) => dispatch(setUsername(e.target.value))}
+            value={state.account.createAccountUsername}
+            onChange={(e) => dispatch(setCreateAccountUsername(e.target.value))}
           />
           <label htmlFor="password">Password:</label>
           <input
             type="password"
             id="password"
-            value={password}
-            onChange={(e) => dispatch(setPassword(e.target.value))}
+            value={state.account.createAccountPassword}
+            onChange={(e) => dispatch(setCreateAccountPassword(e.target.value))}
           />
           <label htmlFor="password_confirmation">Confirm Password:</label>
           <input
             type="password"
             id="password_confirmation"
-            value={passwordConfirmation}
-            onChange={(e) => dispatch(setPasswordConfirmation(e.target.value))}
+            value={state.account.createAccountPasswordConfirmation}
+            onChange={(e) => dispatch(setCreateAccountPasswordConfirmation(e.target.value))}
           />
           <button type="submit">Submit</button>
         </Box>

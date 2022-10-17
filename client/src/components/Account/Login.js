@@ -3,13 +3,11 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
-import { setUser, setUserToken } from "../State/Slices/accountSlice";
-import { setUsername, setPassword } from "../State/Slices/loginSlice";
+import { setUser, setUserToken, setLoginUsername, setLoginPassword } from "../state/slices/accountSlice";
 
 function Login() {
   const dispatch = useDispatch();
-  const username = useSelector(state => state.login.username);
-  const password = useSelector(state => state.login.password);
+  const state = useSelector(state => state)
 
   function onLogin(data) {
     dispatch(setUser(data.user));
@@ -25,8 +23,8 @@ function Login() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ user: {
-        username,
-        password,
+        username: state.account.loginUsername,
+        password: state.account.loginPassword,
       } }),
     })
       .then((r) => r.json())
@@ -47,11 +45,11 @@ function Login() {
           <label htmlFor="username">Username</label>
           <input
             type="text"
-            value={username}
-            onChange={(e) => dispatch(setUsername(e.target.value))}
+            value={state.account.loginUsername}
+            onChange={(e) => dispatch(setLoginUsername(e.target.value))}
           />
           <label htmlFor="password">Password</label>
-          <input type="password" value={password} onChange={(e) => dispatch(setPassword(e.target.value))}/>
+          <input type="password" value={state.account.loginPassword} onChange={(e) => dispatch(setLoginPassword(e.target.value))}/>
           <button type="submit">Login</button>
         </Box>
       </form>
