@@ -1,17 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchSummaries = createAsyncThunk("database/fetchSummaries", () => {
+export const fetchSummaries = createAsyncThunk(
+  "database/fetchSummaries",
+  () => {
     return fetch("/db_summary")
       .then((response) => response.json())
       .then((data) => data);
   }
 );
 
-export const fetchSearchResults = createAsyncThunk("database/fetchSearchResults", (searchFormEventType) => {
-  return fetch(`/${searchFormEventType}`)
-    .then((response) => response.json()) 
-    .then((data) => data);
-})
+export const fetchSearchResults = createAsyncThunk(
+  "database/fetchSearchResults",
+  (searchFormEventType) => {
+    return fetch(`/${searchFormEventType}`)
+      .then((response) => response.json())
+      .then((data) => data);
+  }
+);
 
 const databaseSlice = createSlice({
   name: "database",
@@ -26,7 +31,7 @@ const databaseSlice = createSlice({
     ],
     searchFormEventType: "serieses",
     summaries: {},
-    searchResults: {},
+    searchResults: null,
     status: "idle",
   },
   reducers: {
@@ -51,10 +56,11 @@ const databaseSlice = createSlice({
     [fetchSearchResults.fulfilled](state, action) {
       state.searchResults = action.payload;
       state.status = "idle";
-    }
+    },
   },
 });
 
-export const { setSearchCategories, setSearchFormEventType } = databaseSlice.actions;
+export const { setSearchCategories, setSearchFormEventType } =
+  databaseSlice.actions;
 
 export default databaseSlice.reducer;

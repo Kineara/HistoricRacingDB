@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import DatabaseSearchResults from "./DatabaseSearchResults";
-import fetchSearchResults from "../state/slices/databaseSlice";
+import { fetchSearchResults } from "../state/slices/databaseSlice";
 import { setSearchFormEventType } from "../state/slices/databaseSlice";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -16,7 +16,7 @@ function DatabaseSearch() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchSearchResults());
+    dispatch(fetchSearchResults(state.database.searchFormEventType));
   }, [dispatch]);
 
   const handleChange = (e) => {
@@ -55,7 +55,7 @@ function DatabaseSearch() {
           </TextField>
         </div>
       </Box>
-      <DatabaseSearchResults data={fetchSearchResults(state.database.searchFormEventType)} />
+      <DatabaseSearchResults data={state.database.searchResults} />
     </Box>
   );
 }
