@@ -11,12 +11,18 @@ export const fetchSummaries = createAsyncThunk(
 
 export const fetchSearchResults = createAsyncThunk(
   "database/fetchSearchResults",
-  (searchFormEventType) => {
-    return fetch(`/${searchFormEventType}`)
+  (url) => {
+    return fetch(`/${url}`)
       .then((response) => response.json())
       .then((data) => data);
   }
 );
+
+export const getData = createAsyncThunk("database/getData", (url) => {
+  return fetch(`/${url}`) 
+    .then((response) => response.json())
+    .then(data => data);
+});
 
 const databaseSlice = createSlice({
   name: "database",
@@ -31,6 +37,7 @@ const databaseSlice = createSlice({
     ],
     searchFormEventType: "serieses",
     summaries: {},
+    data: null,
     searchResults: null,
     status: "idle",
   },
@@ -39,7 +46,7 @@ const databaseSlice = createSlice({
       state.searchCategories = action.payload;
     },
     setSearchFormEventType(state, action) {
-      state.eventType = action.payload;
+      state.searchFormEventType = action.payload;
     },
   },
   extraReducers: {
@@ -55,6 +62,13 @@ const databaseSlice = createSlice({
     },
     [fetchSearchResults.fulfilled](state, action) {
       state.searchResults = action.payload;
+      state.status = "idle";
+    },
+    [getData.pending](state) {
+      state.status = "loading";
+    },
+    [getData.fulfilled](state, action) {
+      state.data = action.payload;
       state.status = "idle";
     },
   },

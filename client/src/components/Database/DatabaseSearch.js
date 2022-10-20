@@ -1,23 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import DatabaseSearchResults from "./DatabaseSearchResults";
-import { fetchSearchResults } from "../state/slices/databaseSlice";
 import { setSearchFormEventType } from "../state/slices/databaseSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 function DatabaseSearch() {
-  // const [searchCategory, setSearchCategory] = useState("serieses");
-  // const [searchResults, setSearchResults] = useState([]);
   const state = useSelector((state) => state);
-  // const searchCategories = state.database.searchCategories
-
+  console.log(state);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchSearchResults(state.database.searchFormEventType));
-  }, [dispatch]);
 
   const handleChange = (e) => {
     dispatch(setSearchFormEventType(e.target.value));
@@ -44,7 +36,7 @@ function DatabaseSearch() {
             select
             label="Category"
             value={state.database.searchFormEventType}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             helperText="Select a search category"
           >
             {state.database.searchCategories.map((option) => (
@@ -55,7 +47,7 @@ function DatabaseSearch() {
           </TextField>
         </div>
       </Box>
-      <DatabaseSearchResults data={state.database.searchResults} />
+      <DatabaseSearchResults category={state.database.searchFormEventType} key={state.database.searchFormEventType} />
     </Box>
   );
 }
