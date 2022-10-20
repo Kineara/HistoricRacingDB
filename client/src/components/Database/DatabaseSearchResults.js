@@ -4,10 +4,13 @@ import ResultsCard from "./ResultsCard";
 import Typography from "@mui/material/Typography";
 import { fetchSearchResults } from "../state/slices/databaseSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
-function DatabaseSearchResults({category}) {
+function DatabaseSearchResults() {
   const state = useSelector(state => state);
   const dispatch = useDispatch();
+  const {category} = useParams();
+  console.log(category);
 
   useEffect(() => {
     dispatch(fetchSearchResults(category));

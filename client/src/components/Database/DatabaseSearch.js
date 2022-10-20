@@ -10,11 +10,11 @@ import { Link, Outlet, useParams, redirect } from "react-router-dom";
 function DatabaseSearch() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const { category } = useParams();
+  // const { category } = useParams();
 
   const handleChange = (e) => {
     dispatch(setSearchFormEventType(e.target.value));
-    <redirect to={`/${category}`} />
+    // <redirect to={`/${category}`} />
   };
 
   return (
@@ -49,8 +49,8 @@ function DatabaseSearch() {
           </TextField>
         </div>
       </Box>
-      <Outlet />
-      <DatabaseSearchResults category={state.database.searchFormEventType} key={state.database.searchFormEventType} />
+      {/* <Outlet /> */}
+      {/* <DatabaseSearchResults category={state.database.searchFormEventType} key={state.database.searchFormEventType} /> */}
     </Box>
   );
 }

@@ -24,8 +24,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/database" element={<Database />}>
-            <Route path=":category" element={<DatabaseSearch />}>
-              <Route path=":id" element={<DatabaseSearchResults />} />
+            <Route path=":category" element={<DatabaseSearchResults />}>
+              <Route path=":id" element={<ShowResult />} />
             </Route>
           </Route>
           <Route path="/submit" element={<SubmitForm />} />
