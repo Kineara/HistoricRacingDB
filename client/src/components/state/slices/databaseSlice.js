@@ -7,6 +7,12 @@ export const fetchSummaries = createAsyncThunk("database/fetchSummaries", () => 
   }
 );
 
+export const fetchSearchResults = createAsyncThunk("database/fetchSearchResults", (searchFormEventType) => {
+  return fetch(`/${searchFormEventType}`)
+    .then((response) => response.json()) 
+    .then((data) => data);
+})
+
 const databaseSlice = createSlice({
   name: "database",
   initialState: {
@@ -19,7 +25,8 @@ const databaseSlice = createSlice({
       { label: "competitors", value: "competitors" },
     ],
     searchFormEventType: "serieses",
-    entities: {},
+    summaries: {},
+    searchResults: {},
     status: "idle",
   },
   reducers: {
@@ -35,9 +42,16 @@ const databaseSlice = createSlice({
       state.status = "loading";
     },
     [fetchSummaries.fulfilled](state, action) {
-      state.entities = action.payload;
+      state.summaries = action.payload;
       state.status = "idle";
     },
+    [fetchSearchResults.pending](state) {
+      state.status = "loading";
+    },
+    [fetchSearchResults.fulfilled](state, action) {
+      state.searchResults = action.payload;
+      state.status = "idle";
+    }
   },
 });
 

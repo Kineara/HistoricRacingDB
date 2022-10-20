@@ -13,14 +13,14 @@ function DatabaseSummary() {
 
   useEffect(() => {
     dispatch(fetchSummaries());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Box sx={{ p: 2, m: 5, border: "1px solid grey" }}>
       <Typography variant="h5" align="center">
         Current Data Summary
       </Typography>
-        <CreateTable tableData={state.database.entities} />
+        <CreateTable tableData={state.database.summaries} />
     </Box>
   );
 }

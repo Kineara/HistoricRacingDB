@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
-import DatabaseSearchResults from "./DatabaseSearchResults.js";
-import { useSelector } from "react-redux";
+import DatabaseSearchResults from "./DatabaseSearchResults";
+import fetchSearchResults from "../state/slices/databaseSlice";
+import { setSearchFormEventType } from "../state/slices/databaseSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 function DatabaseSearch() {
-  const [searchCategory, setSearchCategory] = useState("serieses");
-  const [searchResults, setSearchResults] = useState([]);
-  const state = useSelector(state => state);
-  const searchCategories = state.database.searchCategories 
+  // const [searchCategory, setSearchCategory] = useState("serieses");
+  // const [searchResults, setSearchResults] = useState([]);
+  const state = useSelector((state) => state);
+  // const searchCategories = state.database.searchCategories
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(`/${searchCategory}`)
-      .then((response) => response.json())
-      .then((data) => setSearchResults(data));
-  }, [searchCategory]);
+    dispatch(fetchSearchResults());
+  }, [dispatch]);
 
   const handleChange = (e) => {
-    setSearchCategory(e.target.value);
+    dispatch(setSearchFormEventType(e.target.value));
   };
 
   return (
@@ -41,11 +43,11 @@ function DatabaseSearch() {
             id="select-search-category"
             select
             label="Category"
-            value={searchCategory}
+            value={state.database.searchFormEventType}
             onChange={handleChange}
             helperText="Select a search category"
           >
-            {searchCategories.map((option) => (
+            {state.database.searchCategories.map((option) => (
               <MenuItem key={option.value} value={option.value}>
                 {option.label.replace(/\b[a-z]/, (x) => x.toUpperCase())}
               </MenuItem>
@@ -53,7 +55,7 @@ function DatabaseSearch() {
           </TextField>
         </div>
       </Box>
-      <DatabaseSearchResults data={searchResults} />
+      <DatabaseSearchResults data={fetchSearchResults(state.database.searchFormEventType)} />
     </Box>
   );
 }
