@@ -12,8 +12,6 @@ import DatabaseSearch from "./Database/DatabaseSearch";
 import DatabaseSearchResults from "./Database/DatabaseSearchResults";
 
 function App() {
-
-
   return (
     <BrowserRouter>
       <Routes>
@@ -23,11 +21,14 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
+
           <Route path="/database" element={<Database />}>
-            <Route path=":category" element={<DatabaseSearchResults />}>
-              <Route path=":id" element={<ShowResult />} />
+            <Route path="/database/search" element={<DatabaseSearch />}>
+              <Route path=":category" element={<DatabaseSearchResults />} />
             </Route>
+            <Route path=":category/:id" element={<ShowResult />} />
           </Route>
+
           <Route path="/submit" element={<SubmitForm />} />
           <Route path="/showResult" element={<ShowResult />} />
         </Route>

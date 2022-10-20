@@ -1,21 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import DatabaseSearchResults from "./DatabaseSearchResults";
 import { setSearchFormEventType } from "../state/slices/databaseSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Outlet, useParams, redirect } from "react-router-dom";
+import { Link, Outlet, useParams, useNavigate } from "react-router-dom";
 
 function DatabaseSearch() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  // const { category } = useParams();
+  const navigate = useNavigate();
+  let redirect = true;
+  const {category} = useParams();
+
+
+  if (category === undefined) {
+    redirect = true;
+  } else {
+    redirect = false;
+  }
 
   const handleChange = (e) => {
     dispatch(setSearchFormEventType(e.target.value));
-    // <redirect to={`/${category}`} />
+    navigate(`/database/search/${e.target.value}`)
   };
+
+  useEffect(() => {
+    if (redirect) {
+      navigate(`/database/search/${state.database.searchFormEventType}`);
+    }
+  }, [state.database.searchFormEventType]);
 
   return (
     <Box
@@ -49,7 +64,7 @@ function DatabaseSearch() {
           </TextField>
         </div>
       </Box>
-      {/* <Outlet /> */}
+      <Outlet />
       {/* <DatabaseSearchResults category={state.database.searchFormEventType} key={state.database.searchFormEventType} /> */}
     </Box>
   );

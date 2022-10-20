@@ -15,19 +15,30 @@ import {
 } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchFormEventType } from "../state/slices/databaseSlice";
+import DatabaseSearch from "./DatabaseSearch";
 
 function Database() {
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const state = useSelector((state) => state);
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // let redirect = true;
+  // const {id} = useParams();
 
-  const handleChange = (e) => {
-    dispatch(setSearchFormEventType(e.target.value));
-  };
+  // if (id === undefined ) {
+  //   redirect = true;
+  // } else {
+  //   redirect = false;
+  // }
 
-  useEffect(() => {
-    navigate(`/database/${state.database.searchFormEventType}`);
-  }, [state.database.searchFormEventType]);
+  // const handleChange = (e) => {
+  //   dispatch(setSearchFormEventType(e.target.value));
+  // };
+
+  // useEffect(() => {
+  //   if (redirect) {
+  //   navigate(`/database/search/${state.database.searchFormEventType}`);
+  //   }
+  // }, [state.database.searchFormEventType]);
 
   return (
     <Box
@@ -37,7 +48,7 @@ function Database() {
       justifyContent="center"
     >
       <Typography>Database</Typography>
-      <Box
+      {/* <Box
         display="flex"
         flexDirection="column"
         justifyContent="center"
@@ -67,10 +78,8 @@ function Database() {
               ))}
             </TextField>
           </div>
-        </Box>
-        {/* <Outlet /> */}
-        {/* <DatabaseSearchResults category={state.database.searchFormEventType} key={state.database.searchFormEventType} /> */}
-      </Box>
+        </Box> */}
+      {/* </Box> */}
       <Outlet />
       <Typography>-or-</Typography>
       <Button variant="outlined" href="/submit">

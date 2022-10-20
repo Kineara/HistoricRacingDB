@@ -21,7 +21,7 @@ export default function Navbar() {
         }}
       >
         <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} to="/" />
-        <BottomNavigationAction label="Database" icon={<DatasetIcon />} component={Link} to="/database" />
+        <BottomNavigationAction label="Database" icon={<DatasetIcon />} component={Link} to="/database/search" />
         <BottomNavigationAction label="Favorites" icon={<FavoriteIcon  />} component={Link} to="/favorites" />
         <BottomNavigationAction label="Account" icon={<AccountBoxIcon />} component={Link} to="/account" />
       </BottomNavigation>

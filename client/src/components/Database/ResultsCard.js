@@ -8,20 +8,16 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { useSelector, useDispatch } from "react-redux";
 import { getResultData, setSearchUrl } from "../state/slices/databaseSlice";
+import { useNavigate } from "react-router-dom";
 
 function ResultsCard({ data }) {
   const state = useSelector(state => state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // function setResultUrl() {
-  //   const category = state.database.searchFormEventType;
-  //   const id = data.id;
-  //   return (`${category}/${id}`)
-  // }
-
-  // function handleClick(e) {
-  //   dispatch(setSearchUrl(setResultUrl()));
-  // }
+  function handleClick(e) {
+    navigate(`/database/${state.database.searchFormEventType}/${data.id}`)
+  }
 
   return (
     <Box sx={{ width: 300, margin: 1}} >
@@ -36,7 +32,7 @@ function ResultsCard({ data }) {
               {data.name}
             </Typography>
             <CardActions>
-              <Link to={`/results/${state.database.searchFormEventType}/${data.id}`} variant="body2" underline="none">View</Link>
+              <Link variant="body2" underline="none" onClick={e => handleClick(e)}>View</Link>
             </CardActions>
           </CardContent>
         </React.Fragment>

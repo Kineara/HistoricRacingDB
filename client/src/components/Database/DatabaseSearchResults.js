@@ -14,7 +14,7 @@ function DatabaseSearchResults() {
 
   useEffect(() => {
     dispatch(fetchSearchResults(category));
-  }, [dispatch])
+  }, [dispatch, category])
 
   function renderResults(results) {
     if (results) {
