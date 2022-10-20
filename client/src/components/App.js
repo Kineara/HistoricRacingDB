@@ -7,6 +7,9 @@ import Login from "./Account/Login";
 import Logout from "./Account/Logout";
 import Database from "./Database/Database";
 import SubmitForm from "./Database/SubmitForm";
+import ShowResult from "./Database/ShowResult";
+import DatabaseSearch from "./Database/DatabaseSearch";
+import DatabaseSearchResults from "./Database/DatabaseSearchResults";
 
 function App() {
 
@@ -20,8 +23,13 @@ function App() {
           <Route path="/account" element={<Account />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/database" element={<Database />} />
+          <Route path="/database" element={<Database />}>
+            <Route path=":category" element={<DatabaseSearch />}>
+              <Route path=":id" element={<DatabaseSearchResults />} />
+            </Route>
+          </Route>
           <Route path="/submit" element={<SubmitForm />} />
+          <Route path="/showResult" element={<ShowResult />} />
         </Route>
       </Routes>
     </BrowserRouter>

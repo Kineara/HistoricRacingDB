@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from "react-redux";
 function DatabaseSearchResults({category}) {
   const state = useSelector(state => state);
   const dispatch = useDispatch();
-  console.log(category);
 
   useEffect(() => {
     dispatch(fetchSearchResults(category));

@@ -18,8 +18,8 @@ export const fetchSearchResults = createAsyncThunk(
   }
 );
 
-export const getData = createAsyncThunk("database/getData", (url) => {
-  return fetch(`/${url}`) 
+export const getResultData = createAsyncThunk("database/getResultData", (url) => {
+  return fetch(url) 
     .then((response) => response.json())
     .then(data => data);
 });
@@ -37,8 +37,9 @@ const databaseSlice = createSlice({
     ],
     searchFormEventType: "serieses",
     summaries: {},
-    data: null,
     searchResults: null,
+    searchUrl: null,
+    searchResultData: null,
     status: "idle",
   },
   reducers: {
@@ -48,6 +49,9 @@ const databaseSlice = createSlice({
     setSearchFormEventType(state, action) {
       state.searchFormEventType = action.payload;
     },
+    setSearchUrl(state, action) {
+      state.searchResultUrl = action.payload;
+    }
   },
   extraReducers: {
     [fetchSummaries.pending](state) {
@@ -64,17 +68,17 @@ const databaseSlice = createSlice({
       state.searchResults = action.payload;
       state.status = "idle";
     },
-    [getData.pending](state) {
+    [getResultData.pending](state) {
       state.status = "loading";
     },
-    [getData.fulfilled](state, action) {
-      state.data = action.payload;
+    [getResultData.fulfilled](state, action) {
+      state.searchResultData = action.payload;
       state.status = "idle";
     },
   },
 });
 
-export const { setSearchCategories, setSearchFormEventType } =
+export const { setSearchCategories, setSearchFormEventType, setSearchUrl } =
   databaseSlice.actions;
 
 export default databaseSlice.reducer;

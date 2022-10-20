@@ -5,14 +5,16 @@ import MenuItem from "@mui/material/MenuItem";
 import DatabaseSearchResults from "./DatabaseSearchResults";
 import { setSearchFormEventType } from "../state/slices/databaseSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { Link, Outlet, useParams, redirect } from "react-router-dom";
 
 function DatabaseSearch() {
   const state = useSelector((state) => state);
-  console.log(state);
   const dispatch = useDispatch();
+  const { category } = useParams();
 
   const handleChange = (e) => {
     dispatch(setSearchFormEventType(e.target.value));
+    <redirect to={`/${category}`} />
   };
 
   return (
@@ -47,6 +49,7 @@ function DatabaseSearch() {
           </TextField>
         </div>
       </Box>
+      <Outlet />
       <DatabaseSearchResults category={state.database.searchFormEventType} key={state.database.searchFormEventType} />
     </Box>
   );
