@@ -26,29 +26,49 @@ export default function BasicTable({ data }) {
   }
 
   function createValues(data) {
-    const tableData = Object.values(data).flat();
+    const tableData = Object.values(data);
     console.log(tableData);
     return (
       <TableRow>
         {tableData.map((entry) => {
           if (typeof entry === "object") {
             return (
-            <TableCell>
-              <Table>
-                <TableHead>{createHeadings(entry)}</TableHead>
-                <TableBody>
-                  <TableRow>
-                  {Object.values(entry).map((recEntry) => {
-                    return (
-                      <TableCell>
-                        {recEntry}
-                      </TableCell>
-                    )
-                  })}
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableCell>);
+              <TableCell>
+                <Table>
+                  <TableHead>{createHeadings(entry)}</TableHead>
+                  <TableBody>
+                    <TableRow>
+                      {Object.values(entry).map((recEntry) => {
+                        if (typeof recEntry === "object") {
+                          return (
+                            <TableCell>
+                              <Table>
+                                <TableHead>
+                                  {createHeadings(recEntry)}
+                                </TableHead>
+                                <TableBody>
+                                  <TableRow>
+                                    {Object.values(recEntry).map(
+                                      (recEntry2) => {
+                                        return (
+                                          <TableCell>{recEntry2}</TableCell>
+                                        );
+                                      }
+                                    )}
+                                  </TableRow>
+                                </TableBody>
+                              </Table>
+                            </TableCell>
+                          );
+                        } else {
+                          return <TableCell>{recEntry}</TableCell>;
+                        }
+                      })}
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            );
           } else {
             return <TableCell>{entry}</TableCell>;
           }
@@ -58,17 +78,15 @@ export default function BasicTable({ data }) {
   }
 
   if (data) {
-  return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>{createHeadings(data)}</TableHead>
-        <TableBody>
-          {createValues(data)}
-        </TableBody>
-      </Table>
-    </TableContainer> 
+    return (
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>{createHeadings(data)}</TableHead>
+          <TableBody>{createValues(data)}</TableBody>
+        </Table>
+      </TableContainer>
     );
   } else {
-    return <Typography>Table Data Loading...</Typography>
+    return <Typography>Table Data Loading...</Typography>;
   }
 }
