@@ -31,7 +31,7 @@ function CreateAccount() {
         .then((data) => onCreateAccount(data));
     }
     else {
-      console.log("fix your password yo")
+      console.log("Non-matching passwords")
     }
   }
 

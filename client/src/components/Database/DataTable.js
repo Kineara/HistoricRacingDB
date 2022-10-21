@@ -6,13 +6,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useSelector, useDispatch } from "react-redux";
 import Typography from "@mui/material/Typography";
 
 export default function BasicTable({ data }) {
-  // console.log(Object.keys(data));
-  // console.log(Object.values(data).flat());
-  // console.log(Object.entries(data))
 
   function createHeadings(data) {
     const tableHeadings = Object.keys(data);

@@ -16,6 +16,8 @@ function DatabaseSearch() {
 
   if (category === undefined) {
     redirect = true;
+  } else if (category !== state.database.searchFormEventType) {
+    dispatch(setSearchFormEventType(category));
   } else {
     redirect = false;
   }

@@ -8,7 +8,6 @@ function Logout() {
 
   function handleLogout() {
     dispatch(setUser(null));
-    console.log("logout triggrereded");
   }
 
   return (

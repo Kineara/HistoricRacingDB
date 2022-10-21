@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import DataTable from "./DataTable";
 import { useSelector, useDispatch } from "react-redux";
 import { getResultData } from "../state/slices/databaseSlice";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 
