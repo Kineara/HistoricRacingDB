@@ -10,13 +10,14 @@ function DatabaseSearchResults() {
   const state = useSelector(state => state);
   const dispatch = useDispatch();
   const {category} = useParams();
-  console.log(category);
+  const results = state.database.searchResults
+  console.log(results)
 
   useEffect(() => {
     dispatch(fetchSearchResults(category));
   }, [dispatch, category])
 
-  function renderResults(results) {
+  function renderResults() {
     if (results) {
       const render = results.map((entry) => {
         return <ResultsCard data={entry} key={entry.id} />;
@@ -35,7 +36,7 @@ function DatabaseSearchResults() {
       justifyContent="center"
       alignItems="center"
     >
-      {renderResults(state.database.searchResults)}
+      {renderResults()}
     </Box>
   );
 }
