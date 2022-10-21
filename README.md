@@ -60,3 +60,13 @@
   ```api/v1/db_summary```
   - Gives an overview of the information currently stored in the database
 
+
+  ## Local Setup
+  - Clone the repository, and then run ```npm install --prefix client``` to install the dependencies
+  - Start the backend server with ```rails s```
+  - Start the frontend client with ```npm start --prefix client```
+
+
+  ## Heroku Link
+  ```https://historic-racing-db.herokuapp.com/```
+

@@ -50,7 +50,11 @@ function SubmitFormData({ category }) {
             onChange={(e) => setNationality(e.target.value)}
           >
             {state.nationalities.map((entry) => {
-              return <MenuItem value={entry.id} key={entry.id}>{entry.name}</MenuItem>;
+              return (
+                <MenuItem value={entry.id} key={entry.id}>
+                  {entry.name}
+                </MenuItem>
+              );
             })}
           </Select>
         </FormControl>
@@ -77,6 +81,10 @@ function SubmitFormData({ category }) {
             }}
             noValidate
             autoComplete="off"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
           >
             <div>
               <TextField
@@ -119,6 +127,10 @@ function SubmitFormData({ category }) {
             }}
             noValidate
             autoComplete="off"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
           >
             <div>
               <TextField
@@ -145,7 +157,7 @@ function SubmitFormData({ category }) {
                   control={<Radio />}
                   label="Motorcycle"
                 />
-                <FormControlLabel value="car" control={<Radio />} label="car" />
+                <FormControlLabel value="car" control={<Radio />} label="Car" />
               </RadioGroup>
             </div>
             <div>
@@ -160,10 +172,8 @@ function SubmitFormData({ category }) {
         function handleTrackSubmit(e) {
           e.preventDefault();
           const data = {
-            
-              name: state.submitFormTrackName,
-              nationality_id: state.nationality,
-            
+            name: state.submitFormTrackName,
+            nationality_id: state.nationality,
           };
           dispatch(postNewTrack(data));
           navigate("/database/search/tracks");
@@ -176,6 +186,10 @@ function SubmitFormData({ category }) {
             }}
             noValidate
             autoComplete="off"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
           >
             <div>
               <TextField
@@ -188,9 +202,7 @@ function SubmitFormData({ category }) {
                 }
               />
             </div>
-            <div>
-              {nationalitySelect()}
-            </div>
+            <div>{nationalitySelect()}</div>
             <div>
               <Button variant="outlined" onClick={(e) => handleTrackSubmit(e)}>
                 Submit
@@ -219,6 +231,10 @@ function SubmitFormData({ category }) {
             }}
             noValidate
             autoComplete="off"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
           >
             <div>
               <TextField
@@ -231,9 +247,7 @@ function SubmitFormData({ category }) {
                 }
               />
             </div>
-            <div>
-              {nationalitySelect()}
-            </div>
+            <div>{nationalitySelect()}</div>
             <div>
               <Button variant="outlined" onClick={(e) => handleTeamSubmit(e)}>
                 Submit
@@ -245,10 +259,8 @@ function SubmitFormData({ category }) {
         function handleManufacturerSubmit(e) {
           e.preventDefault();
           const data = {
-            
-              name: state.submitFormManufacturerName,
-              nationality_id: state.nationality,
-            
+            name: state.submitFormManufacturerName,
+            nationality_id: state.nationality,
           };
           dispatch(postNewManufacturer(data));
           navigate("/database/search/manufacturers");
@@ -261,6 +273,10 @@ function SubmitFormData({ category }) {
             }}
             noValidate
             autoComplete="off"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
           >
             <div>
               <TextField
@@ -273,11 +289,12 @@ function SubmitFormData({ category }) {
                 }
               />
             </div>
+            <div>{nationalitySelect()}</div>
             <div>
-              {nationalitySelect()}
-            </div>
-            <div>
-              <Button variant="outlined" onClick={(e) => handleManufacturerSubmit(e)}>
+              <Button
+                variant="outlined"
+                onClick={(e) => handleManufacturerSubmit(e)}
+              >
                 Submit
               </Button>
             </div>
@@ -287,11 +304,9 @@ function SubmitFormData({ category }) {
         function handleCompetitorSubmit(e) {
           e.preventDefault();
           const data = {
-            
-              first_name: state.submitFormCompetitorFirstName,
-              last_name: state.submitFormCompetitorLastName,
-              nationality_id: state.nationality,
-            
+            first_name: state.submitFormCompetitorFirstName,
+            last_name: state.submitFormCompetitorLastName,
+            nationality_id: state.nationality,
           };
           dispatch(postNewCompetitor(data));
           navigate("/database/search/competitors");
@@ -304,6 +319,10 @@ function SubmitFormData({ category }) {
             }}
             noValidate
             autoComplete="off"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
           >
             <div>
               <TextField
@@ -327,11 +346,12 @@ function SubmitFormData({ category }) {
                 }
               />
             </div>
+            <div>{nationalitySelect()}</div>
             <div>
-              {nationalitySelect()}
-            </div>
-            <div>
-              <Button variant="outlined" onClick={(e) => handleCompetitorSubmit(e)}>
+              <Button
+                variant="outlined"
+                onClick={(e) => handleCompetitorSubmit(e)}
+              >
                 Submit
               </Button>
             </div>
