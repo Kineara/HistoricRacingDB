@@ -8,10 +8,10 @@ Rails.application.routes.draw do
       resources :seasons, only: [:show]
       resources :championships, only: [:show]
       resources :events, only: [:index, :show]
-      resources :competitors, only: [:index, :show, :create, :update, :destroy]
+      resources :competitors, only: [:index, :show, :create]
       resources :nationalities, only: [:index, :show, :create]
-      resources :manufacturers
-      resources :teams
+      resources :manufacturers, only: [:index, :show, :create]
+      resources :teams, only: [:index, :show, :create]
       resources :tracks, only: [:index, :show, :create]
       resources :db_summary, only: [:index]
     end

@@ -1,5 +1,5 @@
 class Api::V1::TeamsController < ApplicationController
-  skip_before_action :authorized, only: [:index, :show]
+  skip_before_action :authorized, only: [:index, :show, :create]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def index 
@@ -32,7 +32,7 @@ class Api::V1::TeamsController < ApplicationController
   private 
 
   def team_params 
-    params.permit(:name, :nationality_id)
+    params.require(:team).permit(:name, :nationality_id)
   end
 
   def find_team

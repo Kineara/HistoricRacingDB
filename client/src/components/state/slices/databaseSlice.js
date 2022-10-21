@@ -27,6 +27,15 @@ export const getResultData = createAsyncThunk(
   }
 );
 
+export const getNationalities = createAsyncThunk(
+  "database/getNationalities",
+  () => {
+    return fetch("/api/v1/nationalities")
+      .then((response) => response.json())
+      .then((data) => data);
+  }
+);
+
 export const postNewSeries = createAsyncThunk(
   "database/postNewSeries",
   (data) => {
@@ -72,6 +81,51 @@ export const postNewTrack = createAsyncThunk(
   }
 );
 
+export const postNewTeam = createAsyncThunk(
+  "database/postNewTeam",
+  (data) => {
+    return fetch("/api/v1/teams", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+  }
+);
+
+export const postNewManufacturer = createAsyncThunk(
+  "database/postNewManufacturer",
+  (data) => {
+    return fetch("/api/v1/manufacturers", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+  }
+);
+
+export const postNewCompetitor = createAsyncThunk(
+  "database/postNewCompetitor",
+  (data) => {
+    return fetch("/api/v1/competitors", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+  }
+);
+
 const databaseSlice = createSlice({
   name: "database",
   initialState: {
@@ -83,18 +137,30 @@ const databaseSlice = createSlice({
       { label: "manufacturers", value: "manufacturers" },
       { label: "competitors", value: "competitors" },
     ],
+    nationalities: [],
+    nationality: 1,
     searchFormEventType: "serieses",
     submitFormCategory: "serieses",
     submitFormSeriesName: "",
     submitFormSeriesVehicleType: "motorcycle",
     submitFormNationalityName: "",
     submitFormTrackName: "",
+    submitFormTeamName: "",
+    submitFormManufacturerName: "",
+    submitFormCompetitorFirstName: "",
+    submitFormCompetitorLastName: "",
     summaries: {},
     searchResults: null,
     searchResultData: null,
     status: "idle",
   },
   reducers: {
+    setNationalities(state, action) {
+      state.nationalities = action.payload;
+    },
+    setNationality(state, action) {
+      state.nationality = action.payload;
+    },
     setSearchCategories(state, action) {
       state.searchCategories = action.payload;
     },
@@ -115,7 +181,20 @@ const databaseSlice = createSlice({
     },
     setSubmitFormTrackName(state, action) {
       state.submitFormTrackName = action.payload;
+    },
+    setSubmitFormTeamName(state, action) {
+      state.submitFormTeamName = action.payload;
+    },
+    setSubmitFormManufacturerName(state, action) {
+      state.submitFormManufacturerName = action.payload;
+    },
+    setSubmitFormCompetitorFirstName(state, action) {
+      state.submitFormCompetitorFirstName = action.payload;
+    },
+    setSubmitFormCompetitorLastName(state, action) {
+      state.submitFormCompetitorLastName = action.payload;
     }
+    
   },
   extraReducers: {
     [fetchSummaries.pending](state) {
@@ -139,6 +218,13 @@ const databaseSlice = createSlice({
       state.searchResultData = action.payload;
       state.status = "idle";
     },
+    [getNationalities.pending](state) {
+      state.status = "loading";
+    },
+    [getNationalities.fulfilled](state, action) {
+      state.nationalities = action.payload;
+      state.status = "idle";
+    }
   },
 });
 
@@ -149,7 +235,12 @@ export const {
   setSubmitFormSeriesName,
   setSubmitFormSeriesVehicleType,
   setSubmitFormNationalityName,
-  setSubmitFormTrackName
+  setSubmitFormTrackName,
+  setSubmitFormTeamName,
+  setSubmitFormManufacturerName,
+  setSubmitFormCompetitorFirstName,
+  setSubmitFormCompetitorLastName,
+  setNationality,
 } = databaseSlice.actions;
 
 export default databaseSlice.reducer;

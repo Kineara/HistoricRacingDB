@@ -32,7 +32,7 @@ class Api::V1::TracksController < ApplicationController
   private 
 
   def track_params 
-    params.require(:track).permit(:name, :nationality_id)
+    params.permit(:name, :nationality_id)
   end
 
   def find_track
