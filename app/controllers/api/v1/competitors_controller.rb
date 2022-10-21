@@ -1,38 +1,37 @@
 class Api::V1::CompetitorsController < ApplicationController
-  skip_before_action :authorized, only: [:index, :show]
-  #wrap_parameters format: []
-rescueApi::V1::e_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  skip_before_action :authorized, only: %i[index show]
+  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
-  def index 
-    competitors = Competitor.all 
-    render json: competitors 
+  def index
+    competitors = Competitor.all
+    render json: competitors
   end
 
-  def show 
-    competitor = find_competitor 
-    render json: competitor 
+  def show
+    competitor = find_competitor
+    render json: competitor
   end
 
-  def create 
+  def create
     competitor = Competitor.create(competitor_params)
-    render json: competitor, status: :created 
+    render json: competitor, status: :created
   end
 
-  def update 
-    competitor = find_competitor 
+  def update
+    competitor = find_competitor
     competitor.update(competitor_params)
-    render json: competitor 
+    render json: competitor
   end
 
-  def destroy 
-    competitor = find_competitor 
-    competitor.destroy 
-    head :no_content 
+  def destroy
+    competitor = find_competitor
+    competitor.destroy
+    head :no_content
   end
 
-  private 
+  private
 
-  def competitor_params 
+  def competitor_params
     params.permit(:first_name, :last_name, :nationality_id)
   end
 
@@ -41,6 +40,6 @@ rescueApi::V1::e_from ActiveRecord::RecordNotFound, with: :render_not_found_resp
   end
 
   def render_not_found_response
-    render json: { error: "Competitor not found" }, status: :not_found
+    render json: { error: 'Competitor not found' }, status: :not_found
   end
 end
