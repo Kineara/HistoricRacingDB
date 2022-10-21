@@ -1,7 +1,7 @@
 class Api::V1::CompetitorsController < ApplicationController
   skip_before_action :authorized, only: [:index, :show]
   #wrap_parameters format: []
-rescuApi::V1::e_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+rescueApi::V1::e_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
   def index 
     competitors = Competitor.all 
