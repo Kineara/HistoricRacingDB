@@ -6,19 +6,19 @@
   - Give simracers and other hobbyists a one stop location for all the information they need to recreate historic racing events
   - Allow community submission of sources and data to be added to the database after review
 
-## User Stories
+## Description
+  - This is a project that started as a Capstone assignment for Flatiron School's Web Development Bootcamp, but has since become an ongoing project with a far larger scope than I originally intended (i.e., I listed out the features I wanted when I started this and had no idea when to say "STOP.") Functionality is limited in the initial release, with the frontend mainly being a direct provider of information from the API. Development from this point will be focused on integrating more data types and improving the front-end experience to allow more direct user interaction with the database.
 
-### MVP
-  As a user, I can:
+### Current Features
+  Users can:
   - Create a profile
   - Log into the site
-  - Search for events by date, location, country, vehicle, or driver/rider
+  - Search for events by location, country, vehicle, or driver/rider
   - View event information and results
-  - Save an event to my profile
-  - Leave public comments on an event
 
 ### Stretch Goals: 
   - Admin status for certain users, allowing them to push updates to database and approve user submitted edits
+  - Favorites lists for users, allowing them to save events (pending login functionality refactor)
   - Submit event data/results
   - Submit corrections to existing event data
   - World visualization (show events on interactive map)
@@ -30,17 +30,33 @@
 
 
 ## API Endpoints
-  /nationalities
+  ```api/v1/nationalities```
   - List all nationalities in the database, with associated competitors, tracks, teams, and manufacturers
 
-  /tracks
+  ```api/v1/tracks```
   - List all tracks and associated nationalities
 
-  /serieses
+  ```api/v1/serieses```
   - List all series and available seasons
 
-  /events/:id
+  ```api/v1/seasons/:id```
+  - Show specific season information
+
+  ```api/v1/championships/:id```
+  - Show specific championship information
+
+  ```api/v1/events/:id```
   - List complete event data for specified event ID
 
-  /events/:id/results
-  - 
+  ```api/v1/competitors```
+  - List all riders/drivers
+
+  ```api/v1/manufacturers```
+  - List all manufacturers
+
+  ```api/v1/teams```
+  - List all teams
+
+  ```api/v1/db_summary```
+  - Gives an overview of the information currently stored in the database
+
