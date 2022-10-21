@@ -1,21 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
-import SubmitForm from "./SubmitForm";
 import Button from "@mui/material/Button";
-import {
-  Routes,
-  Route,
-  Link,
-  Outlet,
-  useParams,
-  useNavigate,
-} from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { setSearchFormEventType } from "../state/slices/databaseSlice";
-import DatabaseSearch from "./DatabaseSearch";
+import { Outlet } from "react-router-dom";
 
 function Database() {
   // const state = useSelector((state) => state);

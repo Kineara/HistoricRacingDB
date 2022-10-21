@@ -18,11 +18,14 @@ export const fetchSearchResults = createAsyncThunk(
   }
 );
 
-export const getResultData = createAsyncThunk("database/getResultData", (url) => {
-  return fetch(url) 
-    .then((response) => response.json())
-    .then(data => data);
-});
+export const getResultData = createAsyncThunk(
+  "database/getResultData",
+  (url) => {
+    return fetch(url)
+      .then((response) => response.json())
+      .then((data) => data);
+  }
+);
 
 const databaseSlice = createSlice({
   name: "database",
@@ -51,7 +54,7 @@ const databaseSlice = createSlice({
     },
     setSearchUrl(state, action) {
       state.searchResultUrl = action.payload;
-    }
+    },
   },
   extraReducers: {
     [fetchSummaries.pending](state) {
