@@ -11,7 +11,6 @@ function DatabaseSearchResults() {
   const dispatch = useDispatch();
   const {category} = useParams();
   const results = state.database.searchResults
-  console.log(results)
 
   useEffect(() => {
     dispatch(fetchSearchResults(category));

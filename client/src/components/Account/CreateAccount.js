@@ -4,10 +4,12 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, setUserToken, setCreateAccountUsername, setCreateAccountPassword, setCreateAccountPasswordConfirmation } from "../state/slices/accountSlice";
+import { useNavigate } from "react-router-dom";
 
 function CreateAccount() {
   const dispatch = useDispatch();
   const state = useSelector(state => state);
+  const navigate = useNavigate();
 
 
   function handleSubmit(e) {
@@ -37,6 +39,7 @@ function CreateAccount() {
     dispatch(setUser(data.user));
     dispatch(setUserToken(data.jwt))
     localStorage.setItem("jwt", data.jwt);
+    navigate("/account")
   }
 
   return (

@@ -7,9 +7,10 @@ import Login from "./Account/Login";
 import Logout from "./Account/Logout";
 import Database from "./Database/Database";
 import SubmitForm from "./Database/SubmitForm";
-import ShowResult from "./Database/ShowResult";
+// import ShowResult from "./Database/ShowResult";
 import DatabaseSearch from "./Database/DatabaseSearch";
 import DatabaseSearchResults from "./Database/DatabaseSearchResults";
+import ResultPage from "./Database/ResultPage";
 
 function App() {
   return (
@@ -26,11 +27,10 @@ function App() {
             <Route path="/database/search" element={<DatabaseSearch />}>
               <Route path=":category" element={<DatabaseSearchResults />} />
             </Route>
-            <Route path=":category/:id" element={<ShowResult />} />
+            <Route path=":category/:id" element={<ResultPage />} />
           </Route>
 
           <Route path="/submit" element={<SubmitForm />} />
-          <Route path="/showResult" element={<ShowResult />} />
         </Route>
       </Routes>
     </BrowserRouter>

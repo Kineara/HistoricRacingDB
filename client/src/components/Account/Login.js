@@ -4,15 +4,18 @@ import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, setUserToken, setLoginUsername, setLoginPassword } from "../state/slices/accountSlice";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const dispatch = useDispatch();
   const state = useSelector(state => state)
+  const navigate = useNavigate();
 
   function onLogin(data) {
     dispatch(setUser(data.user));
     dispatch(setUserToken(data.jwt))
     localStorage.setItem("jwt", data.jwt);
+    navigate("/account")
   }
 
   function handleSubmit(e) {
