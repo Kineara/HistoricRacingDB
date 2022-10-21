@@ -37,10 +37,25 @@ export const postNewSeries = createAsyncThunk(
       },
       body: JSON.stringify(data),
     })
-    .then((response) => response.json())
-    .then((data) => data)
+      .then((response) => response.json())
+      .then((data) => data);
   }
-)
+);
+
+export const postNewNationality = createAsyncThunk(
+  "database/postNewNationality",
+  (data) => {
+    return fetch("/api/v1/nationalities", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+  }
+);
 
 const databaseSlice = createSlice({
   name: "database",
@@ -57,6 +72,7 @@ const databaseSlice = createSlice({
     submitFormCategory: "serieses",
     submitFormSeriesName: "",
     submitFormSeriesVehicleType: "motorcycle",
+    submitFormNationalityName: "",
     summaries: {},
     searchResults: null,
     searchResultData: null,
@@ -77,8 +93,10 @@ const databaseSlice = createSlice({
     },
     setSubmitFormSeriesVehicleType(state, action) {
       state.submitFormSeriesVehicleType = action.payload;
-    }
-
+    },
+    setSubmitFormNationalityName(state, action) {
+      state.submitFormNationalityName = action.payload;
+    },
   },
   extraReducers: {
     [fetchSummaries.pending](state) {
@@ -105,7 +123,13 @@ const databaseSlice = createSlice({
   },
 });
 
-export const { setSearchCategories, setSearchFormEventType, setSubmitFormCategory, setSubmitFormSeriesName, setSubmitFormSeriesVehicleType } =
-  databaseSlice.actions;
+export const {
+  setSearchCategories,
+  setSearchFormEventType,
+  setSubmitFormCategory,
+  setSubmitFormSeriesName,
+  setSubmitFormSeriesVehicleType,
+  setSubmitFormNationalityName,
+} = databaseSlice.actions;
 
 export default databaseSlice.reducer;
