@@ -4,12 +4,12 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
-      resources :serieses, only: [:index, :show]
+      resources :serieses, only: [:index, :show, :create]
       resources :seasons, only: [:show]
       resources :championships, only: [:show]
       resources :events, only: [:index, :show]
       resources :competitors, only: [:index, :show, :create, :update, :destroy]
-      resources :nationalities
+      resources :nationalities, only: [:index, :show, :create]
       resources :manufacturers
       resources :teams
       resources :tracks

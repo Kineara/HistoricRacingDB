@@ -5,14 +5,27 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearchFormEventType } from "../state/slices/databaseSlice";
+import { setSubmitFormCategory } from "../state/slices/databaseSlice";
+import SubmitFormData from './SubmitFormData';
 
 function SubmitForm() {
   
   const dispatch = useDispatch();
   const state = useSelector(state => state)
+
+  function mapCategories() {
+    const categories = state.database.searchCategories.map((entry) => {
+      return (
+        <MenuItem value={entry.value} key={entry.value}>
+          {entry.label.replace(/\b[a-z]/, (x) => x.toUpperCase())}
+        </MenuItem>
+      )
+    })
+    return categories;
+  }
+
+  mapCategories();
 
   return (
     <Box
@@ -28,14 +41,14 @@ function SubmitForm() {
         <Select 
           labelId="event-type-label"
           id="event-type"
-          value={state.database.searchFormEventType}
+          value={state.database.submitFormCategory}
           label="Type"
-          onChange={(e) => dispatch(setSearchFormEventType(e.target.value))}
+          onChange={(e) => dispatch(setSubmitFormCategory(e.target.value))}
           >
-            <MenuItem value="series">Series</MenuItem>
-            <MenuItem value="competitor">Competitor</MenuItem>
+            {mapCategories()}
           </Select>
       </FormControl>
+      <SubmitFormData category={state.database.submitFormCategory} />
     </Box>
   )
 }

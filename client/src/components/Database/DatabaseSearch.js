@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
-import DatabaseSearchResults from "./DatabaseSearchResults";
 import { setSearchFormEventType } from "../state/slices/databaseSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Outlet, useParams, useNavigate } from "react-router-dom";
+import { Outlet, useParams, useNavigate } from "react-router-dom";
 
 function DatabaseSearch() {
   const state = useSelector((state) => state);
@@ -65,7 +64,6 @@ function DatabaseSearch() {
         </div>
       </Box>
       <Outlet />
-      {/* <DatabaseSearchResults category={state.database.searchFormEventType} key={state.database.searchFormEventType} /> */}
     </Box>
   );
 }
