@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :nationalities, only: [:index, :show, :create]
       resources :manufacturers
       resources :teams
-      resources :tracks
+      resources :tracks, only: [:index, :show, :create]
       resources :db_summary, only: [:index]
     end
   end

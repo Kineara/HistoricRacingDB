@@ -57,6 +57,21 @@ export const postNewNationality = createAsyncThunk(
   }
 );
 
+export const postNewTrack = createAsyncThunk(
+  "database/postNewTrack",
+  (data) => {
+    return fetch("/api/v1/tracks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => data);
+  }
+);
+
 const databaseSlice = createSlice({
   name: "database",
   initialState: {
@@ -73,6 +88,7 @@ const databaseSlice = createSlice({
     submitFormSeriesName: "",
     submitFormSeriesVehicleType: "motorcycle",
     submitFormNationalityName: "",
+    submitFormTrackName: "",
     summaries: {},
     searchResults: null,
     searchResultData: null,
@@ -97,6 +113,9 @@ const databaseSlice = createSlice({
     setSubmitFormNationalityName(state, action) {
       state.submitFormNationalityName = action.payload;
     },
+    setSubmitFormTrackName(state, action) {
+      state.submitFormTrackName = action.payload;
+    }
   },
   extraReducers: {
     [fetchSummaries.pending](state) {
@@ -130,6 +149,7 @@ export const {
   setSubmitFormSeriesName,
   setSubmitFormSeriesVehicleType,
   setSubmitFormNationalityName,
+  setSubmitFormTrackName
 } = databaseSlice.actions;
 
 export default databaseSlice.reducer;

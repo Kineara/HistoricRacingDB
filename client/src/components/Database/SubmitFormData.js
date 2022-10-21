@@ -12,9 +12,11 @@ import { useNavigate } from "react-router-dom";
 import {
   postNewSeries,
   postNewNationality,
+  postNewTrack,
   setSubmitFormSeriesName,
   setSubmitFormSeriesVehicleType,
   setSubmitFormNationalityName,
+  setSubmitFormTrackName,
 } from "../state/slices/databaseSlice";
 
 function SubmitFormData({ category }) {
@@ -23,6 +25,7 @@ function SubmitFormData({ category }) {
   const navigate = useNavigate();
 
   console.log(state);
+
   function displayForm(category) {
     switch (category) {
       case "nationalities":
@@ -32,7 +35,7 @@ function SubmitFormData({ category }) {
             name: state.submitFormNationalityName,
           };
           dispatch(postNewNationality(data));
-          navigate("/database/search/nationalities")
+          navigate("/database/search/nationalities");
         }
         return (
           <Box
@@ -55,13 +58,16 @@ function SubmitFormData({ category }) {
               />
             </div>
             <div>
-              <Button variant="outlined" onClick={(e) => handleNationalitySubmit(e)}>
+              <Button
+                variant="outlined"
+                onClick={(e) => handleNationalitySubmit(e)}
+              >
                 Submit
               </Button>
             </div>
           </Box>
         );
-        break;
+        
       case "serieses":
         function handleSeriesSubmit(e) {
           e.preventDefault();
@@ -70,7 +76,7 @@ function SubmitFormData({ category }) {
             vehicle_type: state.submitFormSeriesVehicleType,
           };
           dispatch(postNewSeries(data));
-          navigate("/database/search/serieses")
+          navigate("/database/search/serieses");
         }
 
         return (
@@ -117,15 +123,53 @@ function SubmitFormData({ category }) {
             </div>
           </Box>
         );
-        break;
+        
       case "tracks":
-        break;
-      case "teams":
-        break;
-      case "manufacturers":
-        break;
-      case "competitors":
-        break;
+        function handleTrackSubmit(e) {
+          e.preventDefault();
+          const data = {
+            track: {
+              name: state.submitFormTrackName,
+            },
+          };
+          console.log(data);
+          dispatch(postNewTrack(data));
+          //navigate("/database/search/tracks");
+        }
+        return (
+          <Box
+            component="form"
+            sx={{
+              "& .MuiTextField-root": { m: 1, width: "25ch" },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <div>
+              <TextField
+                required
+                id="track-name"
+                label="Track Name"
+                value={state.submitFormTrackName}
+                onChange={(e) =>
+                  dispatch(setSubmitFormTrackName(e.target.value))
+                }
+              />
+            </div>
+            <div>
+              <Button variant="outlined" onClick={(e) => handleTrackSubmit(e)}>
+                Submit
+              </Button>
+            </div>
+          </Box>
+        );
+        
+      // case "teams":
+      //   break;
+      // case "manufacturers":
+      //   break;
+      // case "competitors":
+      //   break;
       default:
         return <></>;
     }
