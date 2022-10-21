@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const fetchSummaries = createAsyncThunk(
   "database/fetchSummaries",
   () => {
-    return fetch("/db_summary")
+    return fetch("api/v1/db_summary")
       .then((response) => response.json())
       .then((data) => data);
   }
@@ -12,7 +12,7 @@ export const fetchSummaries = createAsyncThunk(
 export const fetchSearchResults = createAsyncThunk(
   "database/fetchSearchResults",
   (url) => {
-    return fetch(`/${url}`)
+    return fetch(`/api/v1/${url}`)
       .then((response) => response.json())
       .then((data) => data);
   }

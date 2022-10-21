@@ -1,4 +1,4 @@
-class DbSummaryController < ApplicationController
+class Api::V1::DbSummaryController < ApplicationController
   skip_before_action :authorized, only: [:index]
 
   def index 

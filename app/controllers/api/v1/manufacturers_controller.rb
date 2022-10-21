@@ -1,4 +1,4 @@
-class ManufacturersController < ApplicationController
+class Api::V1::ManufacturersController < ApplicationController
   skip_before_action :authorized, only: [:index, :show]
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
